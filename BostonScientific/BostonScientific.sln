@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BostonScientific", "BostonScientific\BostonScientific.csproj", "{304ECE55-EA44-4E47-AD10-EB313DD9EC92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BostonScientific.UI", "BostonScientific.UI\BostonScientific.UI.csproj", "{304ECE55-EA44-4E47-AD10-EB313DD9EC92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BostonScientific.DAL", "BostonScientific.DAL\BostonScientific.DAL.csproj", "{459BAF52-AA97-467E-A150-F1222514FEAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BostonScientific.DATA", "BostonScientific.DATA\BostonScientific.DATA.csproj", "{F1C25C9F-3DB1-4A12-A343-E3FBE8A380E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BostonScientific.BLL", "BostonScientific.BLL\BostonScientific.BLL.csproj", "{53F4D890-BA8D-4E30-B64D-8DAA0D0E09B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{304ECE55-EA44-4E47-AD10-EB313DD9EC92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{304ECE55-EA44-4E47-AD10-EB313DD9EC92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{304ECE55-EA44-4E47-AD10-EB313DD9EC92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{459BAF52-AA97-467E-A150-F1222514FEAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{459BAF52-AA97-467E-A150-F1222514FEAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{459BAF52-AA97-467E-A150-F1222514FEAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{459BAF52-AA97-467E-A150-F1222514FEAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1C25C9F-3DB1-4A12-A343-E3FBE8A380E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1C25C9F-3DB1-4A12-A343-E3FBE8A380E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1C25C9F-3DB1-4A12-A343-E3FBE8A380E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1C25C9F-3DB1-4A12-A343-E3FBE8A380E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53F4D890-BA8D-4E30-B64D-8DAA0D0E09B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53F4D890-BA8D-4E30-B64D-8DAA0D0E09B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53F4D890-BA8D-4E30-B64D-8DAA0D0E09B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53F4D890-BA8D-4E30-B64D-8DAA0D0E09B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

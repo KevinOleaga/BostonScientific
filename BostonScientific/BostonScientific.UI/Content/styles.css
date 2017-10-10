@@ -32,7 +32,7 @@
 }
 
 .custom_07 {
-    margin-left: 14.333333%;
+    margin-left: 6.333333%;
 }
 
 .custom_08 {
@@ -78,17 +78,48 @@
 }
 
 .custom_15 {
-    margin-top: -70px;
+    margin-left: 45px;
 }
 
 .custom_16{
     margin-left: 3%;
 }
 
+.custom_17 {
+    margin-top: 2%;
+}
 
+.custom_18 {
+    margin-bottom: 3%;
+}
 
+.custom_19 {
+    margin-left: 15%;
+    margin-right: 15%;
+}
 
-
+.image-preview-input {
+    position: relative;
+    overflow: hidden;
+    margin: 0px;    
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;    
+}
+.image-preview-input input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+    margin-left:2px;
+}
 
 
 .ct-blue {
@@ -8422,7 +8453,7 @@ star {
     }
 
     .card .card-content {
-        padding: 15px 15px 20px 15px;
+        padding: 0px 15px 1px 15px;
     }
 
         .card .card-content .card-title {
@@ -8534,7 +8565,7 @@ star {
     }
 
     .card ul.team-members li {
-        padding: 10px 0px;
+        padding: 15px 0px;
     }
 
         .card ul.team-members li:not(:last-child) {

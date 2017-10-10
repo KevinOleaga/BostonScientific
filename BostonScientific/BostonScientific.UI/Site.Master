@@ -106,6 +106,8 @@
 <!--  Notifications Plugin    -->
 <script src="Scripts/bootstrap-notify.js"></script>
 
+<script src="Scripts/img_upload.js"></script>
+
 <!-- Sweet Alert 2 plugin -->
 <script src="Scripts/sweetalert2.js"></script>
 

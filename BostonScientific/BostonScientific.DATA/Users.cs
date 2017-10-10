@@ -6,7 +6,6 @@ namespace BostonScientific.DATA
     {
         [HashKey]
         public string Email { get; set; }
-        [RangeKey]
         public string Password { get; set; }
         [References(typeof(Roles))]
         public string IdRole { get; set; }
@@ -14,5 +13,7 @@ namespace BostonScientific.DATA
         public string LastName { get; set; }
         public string Telephone { get; set; }
         public string LastTime { get; set; }
+        public string Photo { get; set; }
+        public string Phrase { get; set; }
     }
 }

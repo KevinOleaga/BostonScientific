@@ -21,15 +21,9 @@
                     <div class="collapse" id="users">
                         <ul class="nav custom_01">
                             <li>
-                                <a href="MyProfile.aspx">
+                                <a href="Profile.aspx">
                                     <span class="sidebar-mini fa fa-user custom_01"></span>
                                     <span class="sidebar-normal">Mi Perfil</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="EditProfile.aspx">
-                                    <span class="sidebar-mini fa fa-pencil custom_01"></span>
-                                    <span class="sidebar-normal">Editar Perfil</span>
                                 </a>
                             </li>
                             <li>
@@ -104,6 +98,7 @@
             <div class="navbar-minimize">
                 <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-more-alt"></i></button>
             </div>
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle">
                     <span class="sr-only">Toggle navigation</span>
@@ -111,18 +106,12 @@
                     <span class="icon-bar bar2"></span>
                     <span class="icon-bar bar3"></span>
                 </button>
-                <a class="navbar-brand" href="#Dashboard">Dashboard
+                <a class="navbar-brand" href="#MyProfile">Mi Perfil
                 </a>
             </div>
+
             <div class="collapse navbar-collapse">
-
-                <div class="input-group custom_14">
-                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    <input class="form-control" type="text" id="search" title="Ingrese el área o código del panel" placeholder="Buscar..." runat="server" />
-                    <asp:Button class="custom_06" OnClick="Search_Click" runat="server" />
-                </div>
-
-                <ul class="nav navbar-nav navbar-right custom_15">
+                <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#notifications" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-sign-out fa fa-2x"></i>

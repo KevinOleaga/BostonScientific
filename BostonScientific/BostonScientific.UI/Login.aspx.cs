@@ -1,5 +1,4 @@
-﻿using BostonScientific.DAL;
-using BostonScientific.DAL.Interfaces;
+﻿using BostonScientific.DAL.Interfaces;
 using BostonScientific.DAL.Metodos;
 using System;
 using System.Diagnostics;
@@ -9,7 +8,6 @@ namespace BostonScientific.UI
 {
     public partial class Login : System.Web.UI.Page
     {
-        tools t = new tools();
         static string email, password;
         public IUsers users;
 
@@ -20,7 +18,6 @@ namespace BostonScientific.UI
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            t.CreateTable();
             FormsAuthentication.SignOut();
             divPassword.Visible = false;
             btnPassword.Visible = false;
@@ -30,7 +27,7 @@ namespace BostonScientific.UI
         {
             email = txtUser.Text.ToUpper();
 
-            if (users.Login01(email) == 1)
+            if (users.Login01(email) == true)
             {
                 divUser.Visible = false;
                 btnUser.Visible = false;
@@ -50,7 +47,7 @@ namespace BostonScientific.UI
         {
             password = txtPassword.Text.ToUpper();
 
-            if (users.Login02(email, password) == 1)
+            if (users.Login02(email, password) == true)
             {
                 FormsAuthentication.RedirectFromLoginPage(email, true);
                 Response.Redirect("Index.aspx");

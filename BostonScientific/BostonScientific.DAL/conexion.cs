@@ -1,11 +1,10 @@
 ﻿using Amazon;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
-using BostonScientific.DATA;
-using ServiceStack.Aws.DynamoDb;
 using System;
 using System.Diagnostics;
-using System.Globalization;
+using Amazon.S3;
+using Amazon.S3.Model;
 
 namespace BostonScientific.DAL
 {
@@ -31,19 +30,24 @@ namespace BostonScientific.DAL
             return (client);
         }
 
-        // DynamoDB Context
-        public DynamoDBContext GetContext()
+        // S3 Client
+        public AmazonS3Client S3_GetClient()
         {
-            var ctx = new DynamoDBContext(GetClient());
-            return ctx;
-        }
+            var awsKey = "AKIAIBK3JJO36MVM5ISQ";
+            var awsSecret = "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";
+            var awsRegion = RegionEndpoint.USWest2;
+            AmazonS3Client client;
 
-        // Capitalize
-        public string Capitalize(string text)
-        {
-            string res = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text.ToLower());
-            return res;
+            try
+            {
+                client = new AmazonS3Client(awsKey, awsSecret, awsRegion);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("\nError: Ha ocurriodo un error al obtener el cliente de la capa S3. \nDescripción: " + ex.Message + "\n");
+                return (null);
+            }
+            return (client);
         }
-       
     }
 }

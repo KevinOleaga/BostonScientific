@@ -13,9 +13,9 @@ namespace BostonScientific.DAL
         // DynamoDB Client
         public AmazonDynamoDBClient GetClient()
         {
-            var awsKey = "AKIAIBK3JJO36MVM5ISQ";
-            var awsSecret = "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";
-            var awsRegion = RegionEndpoint.USWest2;
+            var awsKey = "aws_key";
+            var awsSecret = "as_secret_key";
+            var awsRegion = "region_endpoint";
             AmazonDynamoDBClient client;
 
             try
@@ -31,11 +31,11 @@ namespace BostonScientific.DAL
         }
 
         // S3 Client
-        public AmazonS3Client S3_GetClient()
+        public AmazonS3Client S3_GetClient()"
         {
-            var awsKey = "AKIAIBK3JJO36MVM5ISQ";
-            var awsSecret = "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";
-            var awsRegion = RegionEndpoint.USWest2;
+            var awsKey = "aws_key";
+            var awsSecret = "aws_secret_key";
+            var awsRegion = "region_endpoint";
             AmazonS3Client client;
 
             try

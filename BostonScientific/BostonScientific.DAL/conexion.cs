@@ -4,18 +4,18 @@ using Amazon.DynamoDBv2.DataModel;
 using System;
 using System.Diagnostics;
 using Amazon.S3;
-using Amazon.S3.Model;
 
 namespace BostonScientific.DAL
 {
     public class conexion
     {
+        private string awsKey = "AKIAIBK3JJO36MVM5ISQ";
+        private string awsSecret = "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";
+        private RegionEndpoint awsRegion = RegionEndpoint.USWest2;
+        
         // DynamoDB Client
         public AmazonDynamoDBClient GetClient()
         {
-            var awsKey = "AKIAIBK3JJO36MVM5ISQ";
-            var awsSecret = "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";
-            var awsRegion = RegionEndpoint.USWest2;
             AmazonDynamoDBClient client;
 
             try
@@ -28,6 +28,13 @@ namespace BostonScientific.DAL
                 return (null);
             }
             return (client);
+        }
+
+        // DynamoDB Context
+        public DynamoDBContext GetContext()
+        {
+            var ctx = new DynamoDBContext(GetClient());
+            return ctx;
         }
 
         // S3 Client

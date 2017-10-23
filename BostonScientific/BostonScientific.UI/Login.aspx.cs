@@ -8,58 +8,184 @@ namespace BostonScientific.UI
 {
     public partial class Login : System.Web.UI.Page
     {
-        static string email, password;
-        public IUsers users;
+        private static string UserName, Password;
+        private IUsers users;
+        private ITools tools;
 
         public Login()
         {
             users = new MUsers();
+            tools = new MTools();
         }
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
             divPassword.Visible = false;
             btnPassword.Visible = false;
+            btnRestore.Visible = false;
+            btnReturn.Visible = false;
         }
 
         protected void btnUser_Click(object sender, EventArgs e)
         {
-            email = txtUser.Text.ToUpper();
+            UserName = txtUser.Text;
 
-            if (users.Login01(email) == true)
+            if (UserName == null)
             {
-                divUser.Visible = false;
-                btnUser.Visible = false;
-                lbError.Visible = false;
+                lbError.Visible = true;
+                lbError.Text = "Usuario inválido";
+            }
+            else if (users.Login01(tools.Encrypt(UserName.ToUpper())) == true)
+            {
+                var res = users.GetUserStatus(tools.Encrypt(UserName.ToUpper()));
 
-                divPassword.Visible = true;
-                btnPassword.Visible = true;
+                switch (res)
+                {
+                    case "Activo":
+                        divUser.Visible = false;
+                        btnUser.Visible = false;
+
+                        divPassword.Visible = true;
+                        btnPassword.Visible = true;
+
+                        btnReturn.Visible = false;
+                        btnRestore.Visible = false;
+
+                        lbError.Visible = false;
+                        break;
+                    case "Bloqueado":
+                        lbError.Visible = true;
+                        lbError.Text = "Cuenta Bloqueada.";
+
+                        divUser.Visible = false;
+                        btnUser.Visible = false;
+
+                        divPassword.Visible = false;
+                        btnPassword.Visible = false;
+
+                        btnReturn.Visible = true;
+                        btnRestore.Visible = true;
+
+                        link.Visible = false;
+                        break;
+                }
             }
             else
             {
+                lbError.Visible = true;
                 lbError.Text = "Usuario inválido";
-                Debug.WriteLine("\nError: Usuario inválido. \nDescripción: El usuario " + email + " es inválido.");
+                Debug.WriteLine("\nError: Usuario inválido. \nDescripción: El usuario " + UserName + " es inválido.");
             }
+        }
+
+        protected void btnReturn_Click(object sender, EventArgs e)
+        {
+            txtUser.Text = string.Empty;
+
+            divUser.Visible = true;
+            btnUser.Visible = true;
+
+            lbError.Visible = false;
+            link.Visible = true;
+        }
+
+        protected void btnRestore_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ForgotPassword.aspx");
         }
 
         protected void btnPassword_Click(object sender, EventArgs e)
         {
-            password = txtPassword.Text.ToUpper();
+            Password = txtPassword.Text;
 
-            if (users.Login02(email, password) == true)
+            if (Password == null)
             {
-                FormsAuthentication.RedirectFromLoginPage(email, true);
-                Response.Redirect("Index.aspx");
+                lbError.Visible = true;
+                lbError.Text = "Contraseña incorrecta";
+            }
+            else if (users.Login02(tools.Encrypt(UserName.ToUpper()), tools.Encrypt(Password.ToUpper())) == true)
+            {
+                var res = users.GetUserStatus(tools.Encrypt(UserName.ToUpper()));
+
+                switch (res)
+                {
+                    case "Activo":
+                        users.DeleteFailedAttempts(tools.Encrypt(UserName.ToUpper()));
+                        FormsAuthentication.RedirectFromLoginPage(UserName, true);
+                        Response.Redirect("Index.aspx");
+                        break;
+                    case "Bloqueado":
+                        lbError.Visible = true;
+                        lbError.Text = "Cuenta Bloqueada.";
+
+                        divUser.Visible = false;
+                        btnUser.Visible = false;
+
+                        divPassword.Visible = false;
+                        btnPassword.Visible = false;
+
+                        btnReturn.Visible = true;
+                        btnRestore.Visible = true;
+
+                        link.Visible = false;
+                        break;
+                }
             }
             else
             {
-                divPassword.Visible = true;
-                btnPassword.Visible = true;
-                lbError.Visible = true;
+                var res = users.GetUserStatus(tools.Encrypt(UserName.ToUpper()));
+                var n = 0;
 
-                lbError.Text = "Contraseña inválida";
-                Debug.WriteLine("\nError: Contraseña inválida. \nDescripción: La contraseña " + password + " es inválida.");
+                switch (res)
+                {
+                    case "Activo":
+                        users.CreateNewFailedAttempt(tools.Encrypt(UserName.ToUpper()));
+                        n = users.GetFailedAttempts(tools.Encrypt(UserName.ToUpper()));
+
+                        if (n == 3)
+                        {
+                            lbError.Visible = true;
+                            lbError.Text = "Cuenta Bloqueada. Intento(" + n + "/3)";
+
+                            divUser.Visible = false;
+                            btnUser.Visible = false;
+
+                            divPassword.Visible = false;
+                            btnPassword.Visible = false;
+
+                            btnReturn.Visible = true;
+                            btnRestore.Visible = true;
+
+                            link.Visible = false;
+                        }
+                        else
+                        {
+                            lbError.Visible = true;
+                            lbError.Text = "Contraseña inválida. Intento(" + n + "/3)";
+
+                            divPassword.Visible = true;
+                            btnPassword.Visible = true;
+                        }
+                        break;
+                    case "Bloqueado":
+                        n = users.GetFailedAttempts(tools.Encrypt(UserName.ToUpper()));
+
+                        lbError.Visible = true;
+                        lbError.Text = "Cuenta Bloqueada. Intento(" + n + "/3)";
+
+                        divUser.Visible = false;
+                        btnUser.Visible = false;
+
+                        divPassword.Visible = false;
+                        btnPassword.Visible = false;
+
+                        btnReturn.Visible = true;
+                        btnRestore.Visible = true;
+
+                        link.Visible = false;
+                        break;
+                }
             }
         }
     }

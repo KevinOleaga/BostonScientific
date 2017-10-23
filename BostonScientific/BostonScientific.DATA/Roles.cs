@@ -4,7 +4,7 @@ namespace BostonScientific.DATA
 {
     public class Roles
     {
-        [AutoIncrement]
+        [HashKey]
         public int IdRole { get; set; }
         public string Name { get; set; }
     }

@@ -1,0 +1,38 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Login.master.cs" Inherits="BostonScientific.UI.Login1" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-1" />
+
+    <title>Login | Boston Scientific</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="Content/login.css" />
+
+    <!-- FONTS -->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900" />
+</head>
+
+<body>
+    <section id="logo">
+        <img class="img-responsive custom_01" src="images/logo_blue.png" alt="Boston Scientific" />
+    </section>
+
+    <section class="container">
+        <section class="row">
+            <div class="col-md-13">
+                <div class="card">
+                    <form class="custom_06" role="login" runat="server">
+                        <asp:ContentPlaceHolder ID="Content" runat="server" />
+                    </form>
+                </div>
+            </div>
+        </section>
+    </section>
+</body>
+</html>

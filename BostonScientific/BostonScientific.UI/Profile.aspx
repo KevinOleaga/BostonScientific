@@ -227,7 +227,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Email</label>
-                            <asp:TextBox CssClass="form-control border-input" TextMode="Email" ToolTip="Digite su email" ID="E_Email" runat="server"></asp:TextBox>
+                            <asp:TextBox CssClass="form-control border-input" ReadOnly="true" TextMode="Email" ToolTip="Digite su email" ID="E_Email" runat="server"></asp:TextBox>
                         </div>
                     </div>
                 </div>

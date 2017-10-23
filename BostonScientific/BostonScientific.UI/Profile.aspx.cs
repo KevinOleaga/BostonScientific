@@ -13,7 +13,7 @@ namespace BostonScientific.UI
     {
         tools tools = new tools();
         string photo = string.Empty;
-
+        
         public IUsers users;
         public Profile()
         {
@@ -25,6 +25,7 @@ namespace BostonScientific.UI
             var res = users.UserInfo(Context.User.Identity.Name);
             var res_role = users.UserRole(Convert.ToInt32(res[0].IdRole));
 
+            // Profile Card
             photo = res[0].Photo;
             user.Text = tools.Capitalize(res[0].FirstName + " " + res[0].LastName);
             email.Text = res[0].Email.ToLower();
@@ -32,13 +33,10 @@ namespace BostonScientific.UI
             tel.Text = res[0].Telephone;
             role.Text = tools.Capitalize(res_role[0].Name);
             last_time.Text = res[0].LastTime;
-            
-            E_FirstName.Text = tools.Capitalize(res[0].FirstName);
-            E_LastName.Text = tools.Capitalize(res[0].LastName);
+
+            // Edit Profile Card
             E_Role.Text = tools.Capitalize(res_role[0].Name);
-            E_Telephone.Text = res[0].Telephone;
             E_Email.Text = res[0].Email.ToLower();
-            E_Phrase.Value = res[0].Phrase;
         }
 
         public void Photo()
@@ -78,24 +76,24 @@ namespace BostonScientific.UI
 
         protected void btn_UpdateProfile_Click(object sender, EventArgs e)
         {
-            var user = new Users
-            {
-                FirstName = E_FirstName.Text,
-                LastName = E_LastName.Text,
-                Telephone = E_Telephone.Text,
-                Email = E_Email.Text,
-                Phrase = E_Phrase.Value,
-                Photo = ""
-            };
-
-            users.UpdateProfile();
-            
             //var FileName = Path.GetFileName(E_Image.FileName);
             //var FileAddress = Path.GetFullPath(E_Image.FileName);
 
-            //Debug.WriteLine(Path.GetFullPath(E_Image.FileName));
-            
             //users.SendFileToS3(FileName, "FileAddress");
+            
+            string Email = E_Email.Text.ToUpper(); 
+            string FirstName = E_FirstName.Text.ToUpper();
+            string LastName = E_LastName.Text.ToUpper();
+            string Telephone = E_Telephone.Text;
+            string Phrase = E_Phrase.Value;
+            string Photo = "https://bostonscientific.s3-us-west-2.amazonaws.com/Users/descarga.png?X-Amz-Expires=900&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIBK3JJO36MVM5ISQ/20171012/us-west-2/s3/aws4_request&X-Amz-Date=20171012T073236Z&X-Amz-SignedHeaders=host&X-Amz-Signature=8fcc697adfe68b932b8cb44ef2c787c05dc4284890d8b7a72e89623f74a4a98a";
+
+            users.UpdateProfile(Email, FirstName, LastName, Telephone, Phrase, Photo);
+
+            E_FirstName.Text = string.Empty;
+            E_LastName.Text = string.Empty;
+            E_Telephone.Text = string.Empty;
+            E_Phrase.Value = string.Empty;
         }
     }
 }

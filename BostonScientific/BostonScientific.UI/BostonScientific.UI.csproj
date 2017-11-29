@@ -238,6 +238,7 @@
     <Content Include="Scripts\temp\moment.min.js" />
     <Content Include="Scripts\temp\epic.js" />
     <Content Include="Scripts\temp\npm.js" />
+    <Content Include="Scripts\temp\Panels.js" />
     <Content Include="Scripts\temp\perfect-scrollbar.min.js" />
     <Content Include="Scripts\temp\sweetalert2.js" />
     <Content Include="Scripts\UsersConfig.js" />

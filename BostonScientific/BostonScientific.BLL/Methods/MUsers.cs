@@ -150,6 +150,12 @@ namespace BostonScientific.BLL.Methods
         {
             _users.DeleteUser(UserName);
         }
+        
+        // EditUser()
+        public void EditUser(Users EditUser)
+        {
+            _users.EditUser(EditUser);
+        }
 
         #endregion Site.Master
     }

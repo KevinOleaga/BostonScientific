@@ -9,6 +9,5 @@ namespace BostonScientific.DAL
 {
     public class conexion
     {
-        //secret
     }
 }

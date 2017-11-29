@@ -142,6 +142,29 @@ $().ready(function () {
     });
 });
 
+function binEncode(data) {
+    var binArray = []
+    var datEncode = "";
+
+    for (i = 0; i < data.length; i++) {
+        binArray.push(data[i].charCodeAt(0).toString(2));
+    }
+    for (j = 0; j < binArray.length; j++) {
+        var pad = padding_left(binArray[j], '0', 8);
+        datEncode += pad + ' ';
+    }
+    function padding_left(s, c, n) {
+        if (!s || !c || s.length >= n) {
+            return s;
+        }
+        var max = (n - s.length) / c.length;
+        for (var i = 0; i < max; i++) {
+            s = c + s;
+        } return s;
+    }
+    alert(binArray);
+}
+
 function UpdateUser() {
     var FirstName = document.getElementById("E_txtFirstName").value;
     var LastName = document.getElementById("E_txtLastName").value;
@@ -149,27 +172,26 @@ function UpdateUser() {
     var IdCard = document.getElementById("E_txtIdCard").value;
     var Role = document.getElementById("E_ddlRole").value;
     var Telephone = document.getElementById("E_txtTelephone").value;
-    var Photo = document.getElementById('E_Photo');       
-    var FileName = Photo.files[0].name; //foto.png
-    var FileName = Photo.files[0].name; //foto.png
+    // Photo
+    var Photo = document.getElementById('E_Photo').files;    
+    var FileName = Photo.name;
+    //var FileStream = Photo.binArray();
 
-    // Stream FileAddress = E_Photo.PostedFile.InputStream;
-    
-    /*s$.ajax({
+    $.ajax({
         type: "POST",
-        url: "SearchPanel.aspx/UpdatePanel",
-        data: "{'IdPanel' : '" + IdPanel + "','Model' : '" + Model + "','Description' : '" + Description + "','Bus' : '" + Bus + "','Main' : '" + Main + "','Area' : '" + Area + "','From' : '" + From + "','Comments' : '" + Comments + "','Voltage' : '" + Voltage + "','Phases' : '" + Phases + "','Threads' : '" + Threads + "','Frequency' : '" + Frequency + "'}",
+        url: "UsersConfig.aspx/EditUser",
+        data: "{'FirstName' : '" + FirstName + "','LastName' : '" + LastName + "','Email' : '" + Email + "','IdCard' : '" + IdCard + "','Role' : '" + Role + "','Telephone' : '" + Telephone + "','FileName' : '" + FileName + "'}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
             swal({
                 position: 'center',
                 type: 'success',
-                title: 'La información del panel ' + IdPanel + ' se ha actualizado correctamente',
+                title: 'La información del usuario se ha actualizado.',
                 showConfirmButton: false,
                 timer: 5000
             })
             setTimeout(function () { window.location.reload(); }, 5000);
         }
-    });*/
+    });
 }

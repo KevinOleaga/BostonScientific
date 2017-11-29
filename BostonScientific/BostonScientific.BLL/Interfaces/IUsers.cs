@@ -77,6 +77,9 @@ namespace BostonScientific.BLL.Interfaces
 
         // DeleteUser()
         void DeleteUser(string UserName);
+        
+        // EditUser()
+        void EditUser(Users EditUser);
 
         #endregion Site.Master
     }

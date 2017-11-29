@@ -10,7 +10,7 @@ namespace BostonScientific.DAL.Interfaces
 
         // Login 01
         bool Login01(string UserName);
-        
+
         // Login 02
         bool Login02(string UserName, string Password);
 
@@ -22,10 +22,10 @@ namespace BostonScientific.DAL.Interfaces
 
         // CreateNewFailedAttempt()
         void CreateNewFailedAttempt(string UserName);
-        
+
         // DeleteFailedAttempts()
         void DeleteFailedAttempts(string UserName);
-        
+
         // UserExist()
         bool UserExist(string UserName);
 
@@ -34,7 +34,7 @@ namespace BostonScientific.DAL.Interfaces
 
         // ResetPassword()
         bool ResetPassword(string UserEmail, string Body, string UserName);
-        
+
         // CheckCode()
         bool CheckCode(string UserName, string SecretCode);
 
@@ -53,7 +53,7 @@ namespace BostonScientific.DAL.Interfaces
 
         // GetUserInfo()
         Users[] GetUserInfo(string UserName);
-        
+
         // GetUserRole()
         string GetUserRole(int IdRole);
 
@@ -65,10 +65,10 @@ namespace BostonScientific.DAL.Interfaces
 
         // GetMembersRole()
         Roles[] GetMembersRole(int IdRole);
-        
+
         // SendFileToS3
         void SendFileToS3(Stream FileAddress, string FileName, string UserName);
-        
+
         // UpdateProfile()
         void UpdateProfile(List<string> data, string UserName);
 
@@ -77,6 +77,9 @@ namespace BostonScientific.DAL.Interfaces
 
         // DeleteUser()
         void DeleteUser(string UserName);
+        
+        // EditUser()
+        void EditUser(Users EditUser);
 
         #endregion Site.Master
     }

@@ -48,7 +48,7 @@
                         <i class="fa fa-line-chart"></i>
                         <p>DASHBOARD</p>
                     </a>
-                </li>                
+                </li>
                 <li>
                     <a href="Panels.aspx">
                         <i class="fa fa-sliders"></i>
@@ -88,7 +88,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#notifications" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-sign-out fa fa-2x"></i> 
+                            <i class="fa fa-sign-out fa fa-2x"></i>
                             <p class="hidden-md hidden-lg"><b class="caret"></b></p>
                         </a>
                         <ul class="dropdown-menu">
@@ -109,13 +109,13 @@
                     <div class="row">
                         <div class="col-xs-5">
                             <div class="icon-big icon-primary text-center">
-                                <i class="fa fa-th-large"></i>
+                                <i class="fa fa-users"></i>
                             </div>
                         </div>
                         <div class="col-xs-7">
                             <div class="numbers">
-                                <p>Paneles</p>
-                                <asp:Label ID="PanelCount" runat="server"></asp:Label>
+                                <p>Usuarios</p>
+                                <asp:Label ID="UsersCount" runat="server"></asp:Label>
                             </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                 <div class="card-footer">
                     <hr />
                     <div class="stats">
-                        <i class="fa fa-refresh fa-spin"></i>Actualizado
+                        <i class="fa fa-refresh fa-spin"></i> Actualizado
                     </div>
                 </div>
             </div>
@@ -135,13 +135,13 @@
                     <div class="row">
                         <div class="col-xs-5">
                             <div class="icon-big icon-success text-center">
-                                <i class="fa fa-plus"></i>
+                                <i class="fa fa-th-large"></i>
                             </div>
                         </div>
                         <div class="col-xs-7">
                             <div class="numbers">
-                                <p>Disponible</p>
-                                0
+                                <p>Paneles</p>
+                                <asp:Label ID="PanelsCount" runat="server"></asp:Label>
                             </div>
                         </div>
                     </div>
@@ -149,7 +149,7 @@
                 <div class="card-footer">
                     <hr />
                     <div class="stats">
-                        <i class="fa fa-refresh fa-spin"></i>Actualizado
+                        <i class="fa fa-refresh fa-spin"></i> Actualizado
                     </div>
                 </div>
             </div>
@@ -175,7 +175,7 @@
                 <div class="card-footer">
                     <hr />
                     <div class="stats">
-                        <i class="fa fa-refresh fa-spin"></i>Actualizado
+                        <i class="fa fa-refresh fa-spin"></i> Actualizado
                     </div>
                 </div>
             </div>
@@ -201,7 +201,7 @@
                 <div class="card-footer">
                     <hr />
                     <div class="stats">
-                        <i class="fa fa-refresh fa-spin"></i>Actualizado
+                        <i class="fa fa-refresh fa-spin"></i> Actualizado
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 ﻿using BostonScientific.BLL.Interfaces;
 using BostonScientific.BLL.Methods;
+using BostonScientific.DATA;
 using System;
-using System.IO;
 using System.Web.Services;
 
 namespace BostonScientific.UI
@@ -10,7 +10,7 @@ namespace BostonScientific.UI
     {
         private static IUsers _users;
         private static ITools _tools;
-        public static string UserName;
+        private static string _UserName;
         public static string photo;
 
         public UsersConfig()
@@ -19,7 +19,10 @@ namespace BostonScientific.UI
             _tools = new MTools();
         }
 
-        protected void Page_Load(object sender, EventArgs e) { }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            _UserName = Context.User.Identity.Name;
+        }
 
         protected void UsersInfo()
         {
@@ -62,11 +65,34 @@ namespace BostonScientific.UI
         }
 
         [WebMethod]
-        public static string EditUser()
+        public static void EditUser(string FirstName, string LastName, string Email, string IdCard, string Role, string Telephone, string FileName)
         {
-            return "PanelView.aspx?C=";
+            var IdRole = 0;
+
+            if (Role.ToUpper() == "ADMINISTRADOR")
+            {
+                IdRole = 1;
+            }else
+            {
+                IdRole = 2;
+            }
+
+            var EditUser = new Users
+            {
+                UserName = _UserName,
+                FirstName = _tools.Encrypt(FirstName.ToUpper()),
+                LastName = _tools.Encrypt(LastName.ToUpper()),
+                Email = _tools.Encrypt(Email.ToUpper()),
+                IdCard = _tools.Encrypt(IdCard),
+                IdRole = IdRole,
+                Telephone = _tools.Encrypt(Telephone)
+            };
+
+            _users.EditUser(EditUser);
+            
+            // FileName 
         }
-        
+
         [WebMethod]
         public static void DeleteUser(string UserName)
         {

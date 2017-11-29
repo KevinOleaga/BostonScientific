@@ -400,3 +400,7 @@
     </div>
     <!-- End Modal EditPanel -->
 </asp:Content>
+
+<asp:Content ID="JS" ContentPlaceHolderID="JS" runat="server">
+    <script src="Scripts/temp/Panels.js"></script>
+</asp:Content>

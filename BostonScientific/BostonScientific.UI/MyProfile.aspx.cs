@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 
 namespace BostonScientific.UI
 {
@@ -88,12 +89,12 @@ namespace BostonScientific.UI
                 _users.UpdateProfile(data, _UserName);
             }
 
-            Stream FileAddress = E_Image.PostedFile.InputStream;            
+            Stream FileStream = E_Image.PostedFile.InputStream;            
             string FileName = Path.GetFileName(E_Image.FileName);
-
+            
             if (FileName != string.Empty)
             {
-                _users.SendFileToS3(FileAddress, FileName, _UserName);
+                _users.SendFileToS3(FileStream, FileName, _UserName);
             }
 
             Response.Redirect("MyProfile.aspx");

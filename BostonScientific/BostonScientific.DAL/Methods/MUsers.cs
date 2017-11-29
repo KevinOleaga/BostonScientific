@@ -624,7 +624,7 @@ namespace BostonScientific.DAL.Methods
             }
         }
 
-        // UpdatePhoto()
+        // _UpdatePhoto()
         private void _UpdatePhoto(string UserName, string NewPhoto)
         {
             var db = new PocoDynamo(con.GetClient());
@@ -648,7 +648,37 @@ namespace BostonScientific.DAL.Methods
                 db.Close();
             }
         }
-        
+
+        // EditUser()
+        public void EditUser(Users EditUser)
+        {
+            var db = new PocoDynamo(con.GetClient());
+
+            try
+            {
+                db.RegisterTable<Users>();
+
+                db.UpdateItem(EditUser.UserName,
+                put: () => new Users
+                {
+                    FirstName = EditUser.FirstName,
+                    LastName = EditUser.LastName,
+                    Email = EditUser.Email,
+                    IdCard = EditUser.IdCard,
+                    IdRole = EditUser.IdRole,
+                    Telephone = EditUser.Telephone,
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("\nError \nUbicación: Capa DAL -> MUsers -> EditUser(). \nDescripción: " + ex.Message);
+            }
+            finally
+            {
+                db.Close();
+            }
+        }
+
         #endregion Site.Master
 
         /*

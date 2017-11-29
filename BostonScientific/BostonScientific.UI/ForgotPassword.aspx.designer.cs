@@ -22,13 +22,13 @@ namespace BostonScientific.UI {
         protected global::System.Web.UI.WebControls.Label lbTitle;
         
         /// <summary>
-        /// Control divEmail.
+        /// Control divUser.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEmail;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUser;
         
         /// <summary>
         /// Control txtUser.
@@ -49,12 +49,12 @@ namespace BostonScientific.UI {
         protected global::System.Web.UI.WebControls.Label lbError;
         
         /// <summary>
-        /// Control btnEmail.
+        /// Control btnRestore.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEmail;
+        protected global::System.Web.UI.WebControls.Button btnRestore;
     }
 }

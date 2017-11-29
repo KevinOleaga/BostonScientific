@@ -1,10 +1,12 @@
 ﻿using BostonScientific.DATA;
+using System.Collections.Generic;
+using System.IO;
 
 namespace BostonScientific.DAL.Interfaces
 {
     public interface IUsers
     {
-        #region Login.aspx
+        #region Login.Master
 
         // Login 01
         bool Login01(string UserName);
@@ -23,27 +25,59 @@ namespace BostonScientific.DAL.Interfaces
         
         // DeleteFailedAttempts()
         void DeleteFailedAttempts(string UserName);
-     
-        #endregion
         
-        #region ForgotPassword.aspx
+        // UserExist()
+        bool UserExist(string UserName);
 
         // GetUserEmail()
         string GetUserEmail(string UserName);
 
         // ResetPassword()
         bool ResetPassword(string UserEmail, string Body, string UserName);
+        
+        // CheckCode()
+        bool CheckCode(string UserName, string SecretCode);
 
-        #endregion ForgotPassword.aspx
+        // SetRandomSecretCode()
+        void SetRandomSecretCode(string UserName);
 
+        // UpdatePassword()
+        void UpdatePassword(string UserName, string NewPassword);
+
+        // UnlockAccount()
         void UnlockAccount(string UserName);
-        void DeleteUser(string UserName);
-        Users[] UserInfo(string email);
-        Roles[] UserRole(int idRole);
-        Users[] UsersInfo();
-        int TotalUsers();
-        void SendFileToS3(string Name, string FileAddress);
-        void UpdateProfile(string Email_, string FirstName_, string LastName_, string Telephone_, string Phrase_, string Photo_);
+
+        #endregion Login.Master
+
+        #region Site.Master
+
+        // GetUserInfo()
         Users[] GetUserInfo(string UserName);
+        
+        // GetUserRole()
+        string GetUserRole(int IdRole);
+
+        // GetTotalUsers()
+        int GetTotalMembers();
+
+        // GetMembersInfo()
+        Users[] GetMembersInfo();
+
+        // GetMembersRole()
+        Roles[] GetMembersRole(int IdRole);
+        
+        // SendFileToS3
+        void SendFileToS3(Stream FileAddress, string FileName, string UserName);
+        
+        // UpdateProfile()
+        void UpdateProfile(List<string> data, string UserName);
+
+        // GetUsersInfo()
+        Users[] GetUsersInfo();
+
+        // DeleteUser()
+        void DeleteUser(string UserName);
+
+        #endregion Site.Master
     }
 }

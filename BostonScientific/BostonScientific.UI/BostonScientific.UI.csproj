@@ -87,7 +87,7 @@
   </Choose>
   <ItemGroup>
     <Reference Include="AWSSDK.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
-      <HintPath>..\packages\AWSSDK.Core.3.3.17.9\lib\net45\AWSSDK.Core.dll</HintPath>
+      <HintPath>..\packages\AWSSDK.Core.3.3.18.2\lib\net45\AWSSDK.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="AWSSDK.DynamoDBv2, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
@@ -146,20 +146,42 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\form-wizard-teal.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\styles.css" />
-    <Content Include="Content\themify-icons.css" />
+    <Content Include="Content\switcher.css" />
+    <Content Include="Content\temp\bootstrap-theme.css" />
+    <Content Include="Content\temp\bootstrap-theme.min.css" />
+    <Content Include="Content\temp\bootstrap.css" />
+    <Content Include="Content\temp\bootstrap.min.css" />
+    <Content Include="Content\temp\demo.css" />
+    <Content Include="Content\temp\epic.css" />
+    <Content Include="Content\temp\font-awesome.css" />
+    <Content Include="Content\temp\font-awesome.min.css" />
+    <Content Include="Content\temp\form-wizard-teal.css" />
+    <Content Include="Content\temp\switcher.css" />
+    <Content Include="Content\temp\themify-icons.css" />
     <Content Include="EmailTemplate.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\font-awesome.css" />
+    <Content Include="fonts\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="ForgotPassword.aspx" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\Header_lock.png" />
+    <Content Include="images\login_bg.jpeg" />
+    <Content Include="images\unknown_user.png" />
+    <Content Include="images\UserCard-Header.png" />
     <Content Include="Login.aspx" />
-    <Content Include="Profile.aspx" />
-    <Content Include="images\bg_profile.jpg" />
+    <Content Include="MyProfile.aspx" />
     <Content Include="images\logo_blue.png" />
     <Content Include="images\logo_white.png" />
     <Content Include="images\profile.png" />
     <Content Include="images\search.png" />
-    <Content Include="images\user1.png" />
     <Content Include="Index.aspx" />
+    <Content Include="Panels.aspx" />
+    <Content Include="PanelView.aspx" />
     <Content Include="ResetPassword.aspx" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-notify.js" />
@@ -169,9 +191,11 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\chartist.min.js" />
+    <Content Include="Scripts\CreatePanel.js" />
     <Content Include="Scripts\es6-promise-auto.min.js" />
+    <Content Include="Scripts\form-wizard.js" />
     <Content Include="Scripts\fullcalendar.min.js" />
-    <Content Include="Scripts\img_upload.js" />
+    <Content Include="Scripts\temp\img_upload.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-jvectormap.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
@@ -190,7 +214,36 @@
     <Content Include="Scripts\sweetalert2.js" />
     <Content Include="Scripts\sweetalert2.min.js" />
     <Content Include="Scripts\SweetAlerts.js" />
-    <Content Include="SearchPanel.aspx" />
+    <Content Include="Scripts\temp\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\temp\bootstrap-notify.js" />
+    <Content Include="Scripts\temp\bootstrap-selectpicker.js" />
+    <Content Include="Scripts\temp\bootstrap-switch-tags.js" />
+    <Content Include="Scripts\temp\bootstrap-table.js" />
+    <Content Include="Scripts\temp\bootstrap.js" />
+    <Content Include="Scripts\temp\bootstrap.min.js" />
+    <Content Include="Scripts\temp\chartist.min.js" />
+    <Content Include="Scripts\temp\demo.js" />
+    <Content Include="Scripts\temp\es6-promise-auto.min.js" />
+    <Content Include="Scripts\temp\form-wizard.js" />
+    <Content Include="Scripts\temp\fullcalendar.min.js" />
+    <Content Include="Scripts\temp\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\temp\jquery-jvectormap.js" />
+    <Content Include="Scripts\temp\jquery-ui.min.js" />
+    <Content Include="Scripts\temp\jquery.bootstrap.wizard.min.js" />
+    <Content Include="Scripts\temp\jquery.datatables.js" />
+    <Content Include="Scripts\temp\jquery.easypiechart.min.js" />
+    <Content Include="Scripts\temp\jquery.sharrre.js" />
+    <Content Include="Scripts\temp\jquery.validate.min.js" />
+    <Content Include="Scripts\temp\methods.js" />
+    <Content Include="Scripts\temp\moment.min.js" />
+    <Content Include="Scripts\temp\epic.js" />
+    <Content Include="Scripts\temp\npm.js" />
+    <Content Include="Scripts\temp\perfect-scrollbar.min.js" />
+    <Content Include="Scripts\temp\sweetalert2.js" />
+    <Content Include="Scripts\UsersConfig.js" />
+    <Content Include="Switch.aspx" />
+    <Content Include="Switches.aspx" />
+    <Content Include="UsersConfig.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -215,12 +268,12 @@
     <Compile Include="Login.Master.designer.cs">
       <DependentUpon>Login.Master</DependentUpon>
     </Compile>
-    <Compile Include="Profile.aspx.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
+    <Compile Include="MyProfile.aspx.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Profile.aspx.designer.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
+    <Compile Include="MyProfile.aspx.designer.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -228,6 +281,20 @@
     </Compile>
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Panels.aspx.cs">
+      <DependentUpon>Panels.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Panels.aspx.designer.cs">
+      <DependentUpon>Panels.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PanelView.aspx.cs">
+      <DependentUpon>PanelView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PanelView.aspx.designer.cs">
+      <DependentUpon>PanelView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResetPassword.aspx.cs">
@@ -237,13 +304,6 @@
     <Compile Include="ResetPassword.aspx.designer.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SearchPanel.aspx.cs">
-      <DependentUpon>SearchPanel.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SearchPanel.aspx.designer.cs">
-      <DependentUpon>SearchPanel.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -251,9 +311,30 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="Switch.aspx.cs">
+      <DependentUpon>Switch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Switch.aspx.designer.cs">
+      <DependentUpon>Switch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Switches.aspx.cs">
+      <DependentUpon>Switches.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Switches.aspx.designer.cs">
+      <DependentUpon>Switches.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsersConfig.aspx.cs">
+      <DependentUpon>UsersConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsersConfig.aspx.designer.cs">
+      <DependentUpon>UsersConfig.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="fonts\" />
+    <Folder Include="fonts\temp\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css.map" />
@@ -263,6 +344,19 @@
     <Content Include="packages.config" />
     <Content Include="Site.Master" />
     <Content Include="Login.Master" />
+    <Content Include="Content\temp\bootstrap-theme.css.map" />
+    <Content Include="Content\temp\bootstrap-theme.min.css.map" />
+    <Content Include="Content\temp\bootstrap.css.map" />
+    <Content Include="Content\temp\bootstrap.min.css.map" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -277,12 +371,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BostonScientific.BLL\BostonScientific.BLL.csproj">
-      <Project>{53f4d890-ba8d-4e30-b64d-8daa0d0e09b9}</Project>
+      <Project>{7afe324b-cc18-4b61-baef-945a11603492}</Project>
       <Name>BostonScientific.BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BostonScientific.DAL\BostonScientific.DAL.csproj">
-      <Project>{459BAF52-AA97-467E-A150-F1222514FEAD}</Project>
-      <Name>BostonScientific.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\BostonScientific.DATA\BostonScientific.DATA.csproj">
       <Project>{f1c25c9f-3db1-4a12-a343-e3fbe8a380e8}</Project>

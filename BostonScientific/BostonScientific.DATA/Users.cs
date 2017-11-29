@@ -20,5 +20,6 @@ namespace BostonScientific.DATA
         [References(typeof(AccountStatus))]
         public int IdStatus { get; set; }
         public int FailedAttempts { get; set; }
+        public string SecretCode { get; set; }
     }
 }

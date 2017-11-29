@@ -6,12 +6,13 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 
 namespace BostonScientific.DAL.Metodos
 {
-    public class MTools : ITools
+    public class MTools
     {
-        conexion con = new conexion();
+    /*    conexion con = new conexion();
         
         // Capitalize()
         public string Capitalize(string text)
@@ -19,6 +20,7 @@ namespace BostonScientific.DAL.Metodos
             string res = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text.ToLower());
             return res;
         }
+        
 
         #region Encryption
 
@@ -67,7 +69,7 @@ namespace BostonScientific.DAL.Metodos
 
         #endregion
 
-        #region DynamoDB
+        #region Managment
 
         // CreateTable_Roles()
         public void CreateTable_Roles()
@@ -143,35 +145,179 @@ namespace BostonScientific.DAL.Metodos
             {
                 var db = new PocoDynamo(con.GetClient());
                 db.RegisterTable<Users>();
-                db.InitSchema();
+                //db.InitSchema();
 
                 var newUser = new Users
                 {
-                    UserName = Encrypt("EPICBS"),
-                    Password = Encrypt("EPIC1234"),
+                    UserName = Encrypt("MAR1234"),
+                    Password = Encrypt("MARTINEZ"),
                     IdRole = 1,
-                    FirstName = Encrypt("EPIC"),
-                    LastName = Encrypt("USER"),
-                    Email = Encrypt("EPICBS@OUTLOOK.COM"),
-                    IdCard = Encrypt("123456789"),
-                    Telephone = Encrypt("8888-8888"),
-                    LastTime = Encrypt(DateTime.Now.Date.ToString()),
-                    Photo = Encrypt("https://s3-us-west-2.amazonaws.com/bostonscientific/Users/default.png"),
+                    FirstName = Encrypt("JUAN JOSE"),
+                    LastName = Encrypt("MARTINEZ"),
+                    Email = Encrypt("JUANJOSEMH73@HOTMAIL.COM"),
+                    IdCard = Encrypt("112341234"),
+                    Telephone = Encrypt("6052-1140"),
+                    LastTime = Encrypt(DateTime.Now.ToShortDateString()),
+                    Photo = Encrypt("https://s3-us-west-2.amazonaws.com/bostonscientific/Users/user.png"),
                     Phrase = Encrypt("La diferencia entre el fracaso y el éxito radica en la voluntad del corazón."),
                     IdStatus = 1,
                     FailedAttempts = 0,
                 };
 
                 db.PutItem(newUser);
-
-                Debug.WriteLine("\nCompletado: \nSe a creado correctamente la tabla 'Users'. \nSe ha asignado un usuario por default. \nUsuario: EPICBS \nContraseña: EPIC1234");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("\nError: \nSe a producido un error al crear la tabla 'Users'. \nDescripción: " + ex.Message);
             }
         }
-        
-        #endregion
+
+        // DropTable_Users()
+        public void DropTable_Users()
+        {
+            var db = new PocoDynamo(con.GetClient());
+
+            try
+            {
+                db.DeleteTable<Users>();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("\nError \nUbicación: Capa DAL -> MTools -> DropTable_Users(). \nDescripción: " + ex.Message);
+            }
+            finally
+            {
+                db.Close();
+            }
+        }
+
+
+
+        // CreateTable_Panels()
+        public void CreateTable_Panels()
+        {
+            var db = new PocoDynamo(con.GetClient());
+
+            try
+            {
+                db.RegisterTable<Panels>();
+                db.InitSchema();
+
+                for (int i = 0; i <= 15; i++)
+                {
+                    var NewPanel = new Panels
+                    {
+                        IdPanel = Encrypt("Panel" +i),
+                        Area = Encrypt("Bodega"),
+                        SpacesAvailable = Encrypt("42"),
+                        Bus = Encrypt("120"),
+                        Comments = Encrypt("Panel seminuevo"),
+                        Description = Encrypt("Panel de paso"),
+                        Frequency = Encrypt("50Hz"),
+                        From = Encrypt("Bodega"),
+                        Main = Encrypt("40"),
+                        Model = Encrypt("XZ-11"),
+                        Phases = Encrypt("3"),
+                        Threads = Encrypt("4"),
+                        Voltage = Encrypt("120V")
+                    };
+
+                    db.PutItem(NewPanel);
+                }
+
+
+                for (int i = 15; i <= 30; i++)
+                {
+                    var NewPanel = new Panels
+                    {
+                        IdPanel = Encrypt("Panel" +i),
+                        Area = Encrypt("Cocina"),
+                        SpacesAvailable = Encrypt("42"),
+                        Bus = Encrypt("120"),
+                        Comments = Encrypt("Panel Nuevo"),
+                        Description = Encrypt("Panel Nuevo"),
+                        Frequency = Encrypt("60Hz"),
+                        From = Encrypt("Aula"),
+                        Main = Encrypt("32"),
+                        Model = Encrypt("AD-11"),
+                        Phases = Encrypt("2"),
+                        Threads = Encrypt("2"),
+                        Voltage = Encrypt("120V")
+                    };
+                    db.PutItem(NewPanel);
+
+                }
+
+                for (int i = 30; i < 45; i++)
+                {
+                    var NewPanel = new Panels
+                    {
+                        IdPanel = Encrypt("Panel" +i),
+                        Area = Encrypt("Laboratorios"),
+                        SpacesAvailable = Encrypt("42"),
+                        Bus = Encrypt("120"),
+                        Comments = Encrypt("Panel Nuevo"),
+                        Description = Encrypt("Panel Nuevo"),
+                        Frequency = Encrypt("60Hz"),
+                        From = Encrypt("Laboratorios"),
+                        Main = Encrypt("32"),
+                        Model = Encrypt("dad-121"),
+                        Phases = Encrypt("1"),
+                        Threads = Encrypt("1"),
+                        Voltage = Encrypt("240V")
+                    };
+                    db.PutItem(NewPanel);
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("\nError \nUbicación: Capa DAL -> MTools -> CreateTable_Panels(). \nDescripción: " + ex.Message);
+            }
+            finally
+            {
+                db.Close();
+            }
+        }
+
+        // DropTable_Panels()
+        public void DropTable_Panels()
+        {
+            var db = new PocoDynamo(con.GetClient());
+
+            try
+            {
+                db.DeleteTable<Panels>();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("\nError \nUbicación: Capa DAL -> MTools -> DropTable_Panels(). \nDescripción: " + ex.Message);
+            }
+            finally
+            {
+                db.Close();
+            }
+        }
+
+        #endregion Managment
+
+
+        // CreateTable_PruebaJuan()
+        public void CreateTable_PruebaJuan()
+        {
+            try
+            {
+                var db = new PocoDynamo(con.GetClient());
+                db.RegisterTable<PruebaJuan>();
+                db.InitSchema();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("\nError: \nSe a producido un error al crear la tabla. \nDescripción: " + ex.Message);
+            }
+        }
+        */
     }
 }

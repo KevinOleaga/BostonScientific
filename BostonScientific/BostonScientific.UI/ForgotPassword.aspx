@@ -3,17 +3,14 @@
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
     <asp:Label ID="lbTitle" runat="server" Text="Restablecer Contraseña" />
     
-    <div id="divEmail" runat="server">
-        <asp:TextBox CssClass="form-control" AutoCompleteType="Disabled" placeholder="Introduzca su usuario" ID="txtUser" runat="server" />
-        <span class="glyphicon glyphicon-user custom_02" />
+    <div id="divUser" class="div_User" runat="server">
+        <asp:TextBox CssClass="form-control" ToolTip="Introduzca su Usuario" placeholder="Usuario" ID="txtUser" runat="server" />
+        <span class="glyphicon glyphicon-user" />
     </div>
 
-    <script type="text/javascript">
-        function successalert() {
+    <div class="link_error" runat="server">
+        <asp:Label ID="lbError" runat="server" />
+    </div>
 
-        }
-    </script>
-
-    <asp:Label ID="lbError" class="custom_04" runat="server" />
-    <asp:Button OnClick="btnRestoreAccount_Click" class="btn btn-block btn-primary custom_05" ID="btnEmail" runat="server" Text="Continuar" />
+    <asp:Button OnClick="btnRestoreAccount_Click" class="btn btn-block btn-primary btn_login" ID="btnRestore" runat="server" Text="Continuar" />
 </asp:Content>

@@ -2,20 +2,25 @@
 
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
     <div id="divUser" runat="server">
-        <asp:TextBox CssClass="form-control" AutoCompleteType="Disabled" ToolTip="Introduzca su usuario" placeholder="Usuario" ID="txtUser" runat="server" />
-        <span class="glyphicon glyphicon-user custom_02" />
+        <asp:TextBox CssClass="form-control" ToolTip="Introduzca su usuario" placeholder="Usuario" ID="txtUser" runat="server" />
+        <span class="glyphicon glyphicon-user" />
     </div>
 
     <div id="divPassword" runat="server">
-        <asp:TextBox CssClass="form-control" AutoCompleteType="Disabled" ToolTip="Introduzca su contraseña" placeholder="Contraseña" TextMode="Password" ID="txtPassword" runat="server" />
-        <span class="glyphicon glyphicon-lock custom_03" />
+        <asp:TextBox CssClass="form-control" ToolTip="Introduzca su Contraseña" placeholder="Contraseña" TextMode="Password" ID="txtPassword" runat="server" />
+        <span class="glyphicon glyphicon-lock" />
     </div>
 
-    <asp:Label ID="lbError" class="custom_04" runat="server" />
+    <div class="link_error" runat="server">
+        <asp:Label ID="lbError" runat="server" />
+    </div>
 
-    <asp:Button OnClick="btnUser_Click" class="btn btn-block btn-primary custom_05" ID="btnUser" runat="server" Text="Continuar" />
-    <asp:Button OnClick="btnReturn_Click" class="btn btn-block btn-primary custom_05" ID="btnReturn" runat="server" Text="Volver" />
-    <asp:Button OnClick="btnRestore_Click" class="btn btn-block btn-primary custom_05" ID="btnRestore" runat="server" Text="Restaurar cuenta" />
-    <asp:Button OnClick="btnPassword_Click" class="btn btn-block btn-primary custom_05" ID="btnPassword" runat="server" Text="Iniciar Sesión" />
-    <a runat="server" id="link" class="custom_07" href="ForgotPassword.aspx">Olvidaste la contraseña ?</a>
+    <asp:Button OnClick="btnUser_Click" class="btn btn-block btn-primary btn_login" ID="btnUser" runat="server" Text="Continuar" />
+    <asp:Button OnClick="btnPassword_Click" class="btn btn-block btn-primary btn_login" ID="btnPassword" runat="server" Text="Iniciar Sesión" />
+    <asp:Button OnClick="btnRestore_Click" class="btn btn-block btn-primary" ID="btnRestore" runat="server" Text="Restaurar Contraseña" />
+    <asp:Button OnClick="btnReturn_Click" class="btn btn-block btn-primary" ID="btnReturn" runat="server" Text="Volver" />
+
+    <section>
+        <a id="link" class="link_forgotpassword" runat="server" href="ForgotPassword.aspx">Olvidaste la contraseña ?</a>
+    </section>
 </asp:Content>

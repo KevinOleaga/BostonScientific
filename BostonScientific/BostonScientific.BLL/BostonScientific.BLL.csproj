@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{53F4D890-BA8D-4E30-B64D-8DAA0D0E09B9}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{7AFE324B-CC18-4B61-BAEF-945A11603492}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BostonScientific.BLL</RootNamespace>
     <AssemblyName>BostonScientific.BLL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,87 +30,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AWSSDK.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
-      <HintPath>..\packages\AWSSDK.Core.3.3.17.6\lib\net45\AWSSDK.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="AWSSDK.DynamoDBv2, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
-      <HintPath>..\packages\AWSSDK.DynamoDBv2.3.3.4.17\lib\net45\AWSSDK.DynamoDBv2.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="AWSSDK.S3, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
-      <HintPath>..\packages\AWSSDK.S3.3.3.10.2\lib\net45\AWSSDK.S3.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="AWSSDK.SQS, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
-      <HintPath>..\packages\AWSSDK.SQS.3.3.2.7\lib\net45\AWSSDK.SQS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ServiceStack, Version=4.5.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ServiceStack.4.5.14\lib\net45\ServiceStack.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ServiceStack.Aws, Version=4.5.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ServiceStack.Aws.4.5.14\lib\net45\ServiceStack.Aws.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ServiceStack.Client, Version=4.5.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ServiceStack.Client.4.5.14\lib\net45\ServiceStack.Client.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ServiceStack.Common, Version=4.5.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ServiceStack.Common.4.5.14\lib\net45\ServiceStack.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ServiceStack.Interfaces, Version=4.0.0.0, Culture=neutral, PublicKeyToken=e06fbc6124f57c43, processorArchitecture=MSIL">
-      <HintPath>..\packages\ServiceStack.Interfaces.4.5.14\lib\portable-wp80+sl5+net45+win8+wpa81+monotouch+monoandroid+xamarin.ios10\ServiceStack.Interfaces.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ServiceStack.Text, Version=4.5.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ServiceStack.Text.4.5.14\lib\net45\ServiceStack.Text.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Interfaces\IPanels.cs" />
+    <Compile Include="Interfaces\ITools.cs" />
+    <Compile Include="Interfaces\IUsers.cs" />
+    <Compile Include="Methods\MPanels.cs" />
+    <Compile Include="Methods\MTools.cs" />
+    <Compile Include="Methods\MUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\AWSSDK.DynamoDBv2.3.3.4.17\analyzers\dotnet\cs\AWSSDK.DynamoDBv2.CodeAnalysis.dll" />
-    <Analyzer Include="..\packages\AWSSDK.S3.3.3.10.2\analyzers\dotnet\cs\AWSSDK.S3.CodeAnalysis.dll" />
-    <Analyzer Include="..\packages\AWSSDK.SQS.3.3.2.7\analyzers\dotnet\cs\AWSSDK.SQS.CodeAnalysis.dll" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BostonScientific.DAL\BostonScientific.DAL.csproj">
       <Project>{459baf52-aa97-467e-a150-f1222514fead}</Project>

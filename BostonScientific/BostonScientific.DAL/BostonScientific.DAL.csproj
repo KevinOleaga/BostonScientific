@@ -91,6 +91,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -106,6 +107,9 @@
     <Compile Include="Interfaces\IPanels.cs" />
     <Compile Include="Interfaces\ITools.cs" />
     <Compile Include="Interfaces\IUsers.cs" />
+    <Compile Include="Methods\MPanels.cs" />
+    <Compile Include="Methods\MTools.cs" />
+    <Compile Include="Methods\MUsers.cs" />
     <Compile Include="Metodos\MPanels.cs" />
     <Compile Include="Metodos\MTools.cs" />
     <Compile Include="Metodos\MUsers.cs" />

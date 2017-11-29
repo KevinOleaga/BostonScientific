@@ -1,21 +1,20 @@
-﻿using BostonScientific.DAL.Interfaces;
-using BostonScientific.DAL.Metodos;
+﻿using BostonScientific.BLL.Interfaces;
+using BostonScientific.BLL.Methods;
 using System;
-using System.Diagnostics;
 using System.Web.Security;
 
 namespace BostonScientific.UI
 {
     public partial class Login : System.Web.UI.Page
     {
-        private static string UserName, Password;
-        private IUsers users;
-        private ITools tools;
+        private static string _UserName, _Password;
+        private IUsers _users;
+        private ITools _tools;
 
         public Login()
         {
-            users = new MUsers();
-            tools = new MTools();
+            _users = new MUsers();
+            _tools = new MTools();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -29,53 +28,58 @@ namespace BostonScientific.UI
 
         protected void btnUser_Click(object sender, EventArgs e)
         {
-            UserName = txtUser.Text;
+            _UserName = txtUser.Text.ToUpper();
 
-            if (UserName == null)
+            if (_UserName == string.Empty)
             {
-                lbError.Visible = true;
-                lbError.Text = "Usuario inválido";
-            }
-            else if (users.Login01(tools.Encrypt(UserName.ToUpper())) == true)
-            {
-                var res = users.GetUserStatus(tools.Encrypt(UserName.ToUpper()));
-
-                switch (res)
-                {
-                    case "Activo":
-                        divUser.Visible = false;
-                        btnUser.Visible = false;
-
-                        divPassword.Visible = true;
-                        btnPassword.Visible = true;
-
-                        btnReturn.Visible = false;
-                        btnRestore.Visible = false;
-
-                        lbError.Visible = false;
-                        break;
-                    case "Bloqueado":
-                        lbError.Visible = true;
-                        lbError.Text = "Cuenta Bloqueada.";
-
-                        divUser.Visible = false;
-                        btnUser.Visible = false;
-
-                        divPassword.Visible = false;
-                        btnPassword.Visible = false;
-
-                        btnReturn.Visible = true;
-                        btnRestore.Visible = true;
-
-                        link.Visible = false;
-                        break;
-                }
+                lbError.Text = "Usuario Inválido";
             }
             else
             {
-                lbError.Visible = true;
-                lbError.Text = "Usuario inválido";
-                Debug.WriteLine("\nError: Usuario inválido. \nDescripción: El usuario " + UserName + " es inválido.");
+                _UserName = _tools.Encrypt(_UserName);
+
+                switch (_users.Login01(_UserName))
+                {
+                    case true:
+                        var res = _users.GetUserStatus(_UserName);
+
+                        if (res == "Activo")
+                        {
+                            divUser.Visible = false;
+                            btnUser.Visible = false;
+
+                            divPassword.Visible = true;
+                            btnPassword.Visible = true;
+
+                            btnReturn.Visible = false;
+                            btnRestore.Visible = false;
+
+                            lbError.Visible = false;
+                        }
+                        else
+                        {
+                            divUser.Visible = false;
+                            btnUser.Visible = false;
+
+                            divPassword.Visible = false;
+                            btnPassword.Visible = false;
+
+                            btnReturn.Visible = true;
+                            btnRestore.Visible = true;
+
+                            lbError.Visible = true;
+                            lbError.Text = "Usuario Bloqueado";
+
+                            link.Visible = false;
+                        }
+                        break;
+                    case false:
+                        txtUser.Text = string.Empty;
+
+                        lbError.Visible = true;
+                        lbError.Text = "Usuario Inválido";
+                        break;
+                }
             }
         }
 
@@ -86,7 +90,6 @@ namespace BostonScientific.UI
             divUser.Visible = true;
             btnUser.Visible = true;
 
-            lbError.Visible = false;
             link.Visible = true;
         }
 
@@ -97,56 +100,82 @@ namespace BostonScientific.UI
 
         protected void btnPassword_Click(object sender, EventArgs e)
         {
-            Password = txtPassword.Text;
+            _Password = txtPassword.Text.ToUpper();
 
-            if (Password == null)
+            if (_Password == string.Empty)
             {
-                lbError.Visible = true;
-                lbError.Text = "Contraseña incorrecta";
-            }
-            else if (users.Login02(tools.Encrypt(UserName.ToUpper()), tools.Encrypt(Password.ToUpper())) == true)
-            {
-                var res = users.GetUserStatus(tools.Encrypt(UserName.ToUpper()));
-
-                switch (res)
-                {
-                    case "Activo":
-                        users.DeleteFailedAttempts(tools.Encrypt(UserName.ToUpper()));
-                        FormsAuthentication.RedirectFromLoginPage(UserName, true);
-                        Response.Redirect("Index.aspx");
-                        break;
-                    case "Bloqueado":
-                        lbError.Visible = true;
-                        lbError.Text = "Cuenta Bloqueada.";
-
-                        divUser.Visible = false;
-                        btnUser.Visible = false;
-
-                        divPassword.Visible = false;
-                        btnPassword.Visible = false;
-
-                        btnReturn.Visible = true;
-                        btnRestore.Visible = true;
-
-                        link.Visible = false;
-                        break;
-                }
+                lbError.Text = "Contraseña Inválida";
             }
             else
             {
-                var res = users.GetUserStatus(tools.Encrypt(UserName.ToUpper()));
-                var n = 0;
+                _Password = _tools.Encrypt(_Password);
 
-                switch (res)
+                switch (_users.Login02(_UserName, _Password))
                 {
-                    case "Activo":
-                        users.CreateNewFailedAttempt(tools.Encrypt(UserName.ToUpper()));
-                        n = users.GetFailedAttempts(tools.Encrypt(UserName.ToUpper()));
+                    case true:
+                        var res = _users.GetUserStatus(_UserName);
 
-                        if (n == 3)
+                        if (res == "Activo")
                         {
+                            _users.DeleteFailedAttempts(_UserName);
+
+                            FormsAuthentication.RedirectFromLoginPage(_UserName, true);
+                            Response.Redirect("Index.aspx");
+                        }
+                        else if (res == "Bloqueado")
+                        {
+                            divUser.Visible = false;
+                            btnUser.Visible = false;
+
+                            divPassword.Visible = false;
+                            btnPassword.Visible = false;
+
+                            btnReturn.Visible = true;
+                            btnRestore.Visible = true;
+
                             lbError.Visible = true;
-                            lbError.Text = "Cuenta Bloqueada. Intento(" + n + "/3)";
+                            lbError.Text = "Usuario Bloqueado";
+
+                            link.Visible = false;
+                        }
+                        break;
+                    case false:
+                        res = _users.GetUserStatus(_UserName);
+                        var n = 0;
+
+                        if (res == "Activo")
+                        {
+                            _users.CreateNewFailedAttempt(_UserName);
+                            n = _users.GetFailedAttempts(_UserName);
+
+                            if (n == 3)
+                            {
+                                divUser.Visible = false;
+                                btnUser.Visible = false;
+
+                                divPassword.Visible = false;
+                                btnPassword.Visible = false;
+
+                                btnReturn.Visible = true;
+                                btnRestore.Visible = true;
+
+                                lbError.Visible = true;
+                                lbError.Text = string.Format("Usuario bloqueado");
+
+                                link.Visible = false;
+                            }
+                            else
+                            {
+                                lbError.Visible = true;
+                                lbError.Text = string.Format("Contraseña Incorrecta");
+
+                                divPassword.Visible = true;
+                                btnPassword.Visible = true;
+                            }
+                        }
+                        else if (res == "Bloqueado")
+                        {
+                            n = _users.GetFailedAttempts(_UserName);
 
                             divUser.Visible = false;
                             btnUser.Visible = false;
@@ -157,33 +186,11 @@ namespace BostonScientific.UI
                             btnReturn.Visible = true;
                             btnRestore.Visible = true;
 
+                            lbError.Visible = true;
+                            lbError.Text = string.Format("Usuario bloqueado");
+
                             link.Visible = false;
                         }
-                        else
-                        {
-                            lbError.Visible = true;
-                            lbError.Text = "Contraseña inválida. Intento(" + n + "/3)";
-
-                            divPassword.Visible = true;
-                            btnPassword.Visible = true;
-                        }
-                        break;
-                    case "Bloqueado":
-                        n = users.GetFailedAttempts(tools.Encrypt(UserName.ToUpper()));
-
-                        lbError.Visible = true;
-                        lbError.Text = "Cuenta Bloqueada. Intento(" + n + "/3)";
-
-                        divUser.Visible = false;
-                        btnUser.Visible = false;
-
-                        divPassword.Visible = false;
-                        btnPassword.Visible = false;
-
-                        btnReturn.Visible = true;
-                        btnRestore.Visible = true;
-
-                        link.Visible = false;
                         break;
                 }
             }

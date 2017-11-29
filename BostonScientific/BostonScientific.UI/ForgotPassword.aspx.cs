@@ -1,20 +1,20 @@
-﻿using BostonScientific.DAL.Interfaces;
-using BostonScientific.DAL.Metodos;
+﻿using BostonScientific.BLL.Interfaces;
+using BostonScientific.BLL.Methods;
 using System;
-using System.Diagnostics;
 using System.IO;
 
 namespace BostonScientific.UI
 {
     public partial class ForgotPassword : System.Web.UI.Page
     {
-        private IUsers users;
-        private ITools tools;
+       private static string _UserName;
+        private IUsers _users;
+        private ITools _tools;
 
         public ForgotPassword()
         {
-            users = new MUsers();
-            tools = new MTools();
+            _users = new MUsers();
+            _tools = new MTools();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -24,42 +24,33 @@ namespace BostonScientific.UI
 
         protected void btnRestoreAccount_Click(object sender, EventArgs e)
         {
-            var UserName = tools.Encrypt(txtUser.Text.ToUpper());
+            _UserName = txtUser.Text.ToUpper();
 
-            if (UserName == null)
+            if (_UserName == string.Empty)
             {
                 lbError.Visible = true;
                 lbError.Text = "Usuario inválido";
-            }
-            else if (users.Login01(UserName) == true)
-            {
-                var res = false;
-
-                divEmail.Visible = false;
-                btnEmail.Visible = false;
-                lbError.Visible = false;
-
-                res = users.ResetPassword(users.GetUserEmail(UserName), CreateBody(), UserName);
-
-                switch (res)
-                {
-                    case true:
-                        Debug.WriteLine("SweetAlert OK");
-                        Response.Redirect("Login.aspx");
-                        break;
-                    case false:
-                        Debug.WriteLine("SweetAlert");
-                        break;
-                }
             }
             else
             {
-                lbError.Visible = true;
-                lbError.Text = "Usuario inválido";
+                _UserName = _tools.Encrypt(_UserName);
+                switch (_users.UserExist(_UserName))
+                {
+                    case true:
+                        lbError.Visible = false;
+
+                        _users.ResetPassword(_users.GetUserEmail(_UserName), CreateBody(), _UserName);
+                        Response.Redirect("Login.aspx");
+                        break;
+                    case false:
+                        lbError.Visible = true;
+                        lbError.Text = "Usuario inválido";
+                        break;
+                }
             }
         }
 
-        public string CreateBody()
+        private string CreateBody()
         {
             string body = string.Empty;
             using (StreamReader reader = new StreamReader(MapPath("EmailTemplate.html")))

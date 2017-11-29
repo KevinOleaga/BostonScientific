@@ -7,7 +7,6 @@ namespace BostonScientific.DATA
         [HashKey]
         [Required]
         public string IdPanel { get; set; }
-        [RangeKey]
         [Required]
         public string Area { get; set; }
         [Required]
@@ -30,6 +29,6 @@ namespace BostonScientific.DATA
         [Required]
         public string Frequency { get; set; }
         [Required]
-        public int SpacesAvailable { get; set; }
+        public string SpacesAvailable { get; set; }
     }
 }

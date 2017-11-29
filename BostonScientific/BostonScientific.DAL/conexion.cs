@@ -9,9 +9,6 @@ namespace BostonScientific.DAL
 {
     public class conexion
     {
-        private string awsKey = "AKIAIBK3JJO36MVM5ISQ";
-        private string awsSecret = "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";
-        private RegionEndpoint awsRegion = RegionEndpoint.USWest2;
         
         // DynamoDB Client
         public AmazonDynamoDBClient GetClient()

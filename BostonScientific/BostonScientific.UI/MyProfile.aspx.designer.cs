@@ -13,58 +13,58 @@ namespace BostonScientific.UI {
     public partial class MyProfile {
         
         /// <summary>
-        /// Control user.
+        /// Control lb_user.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label user;
+        protected global::System.Web.UI.WebControls.Label lb_user;
         
         /// <summary>
-        /// Control email.
+        /// Control lb_email.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label email;
+        protected global::System.Web.UI.WebControls.Label lb_email;
         
         /// <summary>
-        /// Control phrase.
+        /// Control lb_phrase.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label phrase;
+        protected global::System.Web.UI.WebControls.Label lb_phrase;
         
         /// <summary>
-        /// Control username.
+        /// Control lb_username.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label username;
+        protected global::System.Web.UI.WebControls.Label lb_username;
         
         /// <summary>
-        /// Control role.
+        /// Control lb_role.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label role;
+        protected global::System.Web.UI.WebControls.Label lb_role;
         
         /// <summary>
-        /// Control tel.
+        /// Control lb_telephone.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label tel;
+        protected global::System.Web.UI.WebControls.Label lb_telephone;
         
         /// <summary>
         /// Control E_FirstName.

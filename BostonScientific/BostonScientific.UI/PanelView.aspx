@@ -1,19 +1,20 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PanelView.aspx.cs" Inherits="BostonScientific.UI.PanelView" %>
+﻿<%@ Page Title="Vista del Panel" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PanelView.aspx.cs" Inherits="BostonScientific.UI.PanelView" %>
 
 <asp:Content ID="Menu" ContentPlaceHolderID="Menu" runat="server">
     <div class="sidebar" data-background-color="brown" data-active-color="danger">
         <div class="logo">
             <a href="Index.aspx" class="simple-text logo-normal">
-                <img class="img-responsive custom_02 logo-normal" src="images/logo_white.png" alt="Boston Scientific" />
+                <img class="img-responsive logo-normal" src="images/logo_white.png" alt="Boston Scientific" />
             </a>
         </div>
-
+        <!-- end logo -->
         <div class="sidebar-wrapper">
             <div class="user">
                 <div class="info">
                     <div class="photo">
                         <img src="images/profile.png" />
                     </div>
+                    <!-- end photo -->
 
                     <a data-toggle="collapse" href="#users" class="collapsed">
                         <span>Perfil
@@ -22,25 +23,29 @@
                     </a>
 
                     <div class="clearfix"></div>
+                    <!-- end clearfix -->
 
                     <div class="collapse" id="users">
                         <ul class="nav">
                             <li>
                                 <a href="MyProfile.aspx">
-                                    <span class="sidebar-mini fa fa-user custom_01"></span>
+                                    <span class="sidebar-mini fa fa-user menu_icons"></span>
                                     <span class="sidebar-normal">Mi Perfil</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="UsersConfig.aspx">
-                                    <span class="sidebar-mini fa fa-group custom_01"></span>
+                                    <span class="sidebar-mini fa fa-group menu_icons"></span>
                                     <span class="sidebar-normal">Adm. Usuarios</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
+                    <!-- end collapse -->
                 </div>
+                <!-- end info -->
             </div>
+            <!-- end user -->
 
             <ul class="nav">
                 <li>
@@ -52,7 +57,7 @@
                 <li>
                     <a href="Panels.aspx">
                         <i class="fa fa-sliders"></i>
-                        <p>Adm. de Paneles</p>
+                        <p>ADM. DE PANELES</p>
                     </a>
                 </li>
                 <li>
@@ -63,7 +68,9 @@
                 </li>
             </ul>
         </div>
+        <!-- end sidebar-wrapper -->
     </div>
+    <!-- end sidebar -->
 </asp:Content>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
@@ -72,6 +79,7 @@
             <div class="navbar-minimize">
                 <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="fa fa-bars"></i></button>
             </div>
+            <!-- end navbar-minimize -->
 
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle">
@@ -80,9 +88,9 @@
                     <span class="icon-bar bar2"></span>
                     <span class="icon-bar bar3"></span>
                 </button>
-                <a class="navbar-brand" href="#Panels">Vista del Panel
-                </a>
+                <a class="navbar-brand" href="#">Vista del Panel</a>
             </div>
+            <!-- end navbar-header -->
 
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -97,61 +105,72 @@
                     </li>
                 </ul>
             </div>
+            <!-- end collapse navbar-collapse -->
         </div>
+        <!-- end container-fluid -->
     </nav>
+    <!-- end container-fluid -->
 </asp:Content>
 
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
     <div class="col-md-12">
         <div class="card custom-size">
-            <div class="card-header">
-                <h4 class="card-title">
-                    <asp:Label ID="lb_IdPanel" runat="server"></asp:Label>
-                </h4>
-                <p class="category">
-                    <asp:Label ID="lb_Description" runat="server"></asp:Label>
-                </p>
-                <br />
-                <div class="custom-btns">
-                    <button type="button" class="btn btn-center" data-toggle="modal" data-target="#SelectBreakers">Ver información del panel</button>
-                    <button type="button" class="btn btn-center" data-toggle="modal" data-target="#CreateSwitch">Crear Switch</button>
-                </div>
-                <br />
-            </div>
             <div class="card-content">
+                <div class="col-md-6 ">
+                    <div class="form-group" style="margin-top: 4%;">
+                        <h4 class="card-title">
+                            <asp:Label ID="lb_IdPanel" runat="server"></asp:Label>
+                        </h4>
+                        <p class="category custom-card">
+                            <asp:Label ID="lb_Description" runat="server"></asp:Label><br />
+                            <asp:Label ID="lb_SpacesAvailable" runat="server"></asp:Label>
+                        </p>
+                        <div class="btns">
+                            <button type="button" class="btn btnOK_customColor" data-toggle="modal" data-target="#SelectBreakers">Ver información del panel</button>
+                            <button type="button" class="btn btnOK_customColor" data-toggle="modal" data-target="#CreateSwitch">Crear Switch</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-6">
-                    <div class="card-content table-responsive table-full-width">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">CKT</th>
-                                    <th class="text-center">Descripción</th>
-                                    <th class="text-center">AMP</th>
-                                    <th class="text-center">Polo</th>
-                                    <th class="text-center">Ver switch</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% prueba(); %>
-                            </tbody>
-                        </table>
+                    <div class="form-group">
+                        <br />
+                        <textarea runat="server" id="atxtComments" rows="3" class="form-control border-input" placeholder="Comentarios..."></textarea>
+                        <button type="button" class="btn btnOK_customColor custom_btn_save" data-toggle="modal" data-target="#SelectBreakers">Guardar</button>
                     </div>
                 </div>
 
                 <div class="col-md-6">
-                    <div class="card-content table-responsive table-full-width">
-                        <table class="table">
+                    <div class="card-content">
+                        <table id="bootstrap-table" class="table">
                             <thead>
-                                <tr>
-                                    <th class="text-center">CKT</th>
-                                    <th class="text-center">Descripción</th>
-                                    <th class="text-center">AMP</th>
-                                    <th class="text-center">Polo</th>
-                                    <th class="text-center">Ver switch</th>
-                                </tr>
+                                <th data-field="CKT" class="text-center">CKT</th>
+                                <th data-field="IdSwitch" class="text-center Remove"></th>
+                                <th data-field="Estado" class="text-center">Estado</th>
+                                <th data-field="AMP" class="text-center">AMP</th>
+                                <th data-field="Polo" class="text-center">Polo</th>
+                                <th data-field="actions" class="td-actions text-center" data-events="operateEvents" data-formatter="operateFormatter">Ver</th>
                             </thead>
                             <tbody>
-                                <% prueba1(); %>
+                                <% ListSwitches_01(); %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--  end card  -->
+
+                <div class="col-md-6">
+                    <div class="card-content">
+                        <table id="bootstrap-table2" class="table">
+                            <thead>
+                                <th data-field="CKT" class="text-center">CKT</th>
+                                <th data-field="IdSwitch" class="text-center Remove"></th>
+                                <th data-field="Estado" class="text-center">Estado</th>
+                                <th data-field="AMP" class="text-center">AMP</th>
+                                <th data-field="Polo" class="text-center">Polo</th>
+                                <th data-field="actions" class="td-actions text-center" data-events="operateEvents" data-formatter="operateFormatter">Ver</th>
+                            </thead>
+                            <tbody>
+                                <% ListSwitches_02(); %>
                             </tbody>
                         </table>
                     </div>
@@ -160,150 +179,7 @@
         </div>
     </div>
 
-    <!-- Modal CreateSwitch -->
-    <div class="modal fade in" id="SelectBreakers" role="dialog">
-        <div class="modal-dialog modal_custom">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Editar panel</h4>
-                </div>
-                <div class="modal-body">
-
-<button id="btnValoresSeleccionados" type="button" class="btn btn-primary">Valores Seleccionadas</button>
-<hr />
-<table id="myTable" class="table" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
-        <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
-                <td>2009/01/12</td>
-                <td>$86,000</td>
-            </tr>
-            <tr>
-                <td>Cedric Kelly</td>
-                <td>Senior Javascript Developer</td>
-                <td>Edinburgh</td>
-                <td>22</td>
-                <td>2012/03/29</td>
-                <td>$433,060</td>
-            </tr>
-            <tr>
-                <td>Airi Satou</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>33</td>
-                <td>2008/11/28</td>
-                <td>$162,700</td>
-            </tr>
-            <tr>
-                <td>Brielle Williamson</td>
-                <td>Integration Specialist</td>
-                <td>New York</td>
-                <td>61</td>
-                <td>2012/12/02</td>
-                <td>$372,000</td>
-            </tr>
-            <tr>
-                <td>Herrod Chandler</td>
-                <td>Sales Assistant</td>
-                <td>San Francisco</td>
-                <td>59</td>
-                <td>2012/08/06</td>
-                <td>$137,500</td>
-            </tr>
-            <tr>
-                <td>Rhona Davidson</td>
-                <td>Integration Specialist</td>
-                <td>Tokyo</td>
-                <td>55</td>
-                <td>2010/10/14</td>
-                <td>$327,900</td>
-            </tr>
-            <tr>
-                <td>Colleen Hurst</td>
-                <td>Javascript Developer</td>
-                <td>San Francisco</td>
-                <td>39</td>
-                <td>2009/09/15</td>
-                <td>$205,500</td>
-            </tr>
-            <tr>
-                <td>Sonya Frost</td>
-                <td>Software Engineer</td>
-                <td>Edinburgh</td>
-                <td>23</td>
-                <td>2008/12/13</td>
-                <td>$103,600</td>
-            </tr>
-            <tr>
-                <td>Jena Gaines</td>
-                <td>Office Manager</td>
-                <td>London</td>
-                <td>30</td>
-                <td>2008/12/19</td>
-                <td>$90,560</td>
-            </tr>
-            <tr>
-                <td>Quinn Flynn</td>
-                <td>Support Lead</td>
-                <td>Edinburgh</td>
-                <td>22</td>
-                <td>2013/03/03</td>
-                <td>$342,000</td>
-            </tr>
-        </tbody>
-    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btnCancel_customColor" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btnOK_customColor" onclick="UpdatePanel()">Actualizar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Modal CreateSwitch -->
-
-
-    <!-- Modal CreateSwitch -->
+    <!-- modal CreateSwitch -->
     <div class="modal fade in" id="CreateSwitch" role="dialog">
         <div class="modal-dialog modal_custom">
             <div class="modal-content">
@@ -311,65 +187,129 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Crear Switch</h4>
                 </div>
+                <!-- end modal-header -->
+                <!-- end modal-header -->
                 <div class="modal-body">
                     <div class="card-content">
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Tipo de breaker</label>
-                                    <asp:TextBox CssClass="form-control border-input" ToolTip="Digite el tipo de breaker" ID="txtBreaker" runat="server"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Corriente</label>
-                                    <asp:TextBox CssClass="form-control border-input" ToolTip="Digite la corriente" ID="txtCorriente" runat="server"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Calibre</label>
-                                    <asp:TextBox CssClass="form-control border-input" ToolTip="Digite el calibre" ID="txtCalibre" runat="server"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Comentarios</label>
-                                    <textarea runat="server" id="txtComments" rows="5" class="form-control border-input" placeholder="Comentarios..."></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Subir Archivo</label>
-                                <div class="input-group image-preview">
-                                    <input type="text" class="form-control image-preview-filename" disabled="disabled">
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default image-preview-clear" style="display: none;">
-                                            <span class="glyphicon glyphicon-remove"></span>Limpiar
-                   
-                                        </button>
-                                        <div class="btn btn-default image-preview-input">
-                                            <span class="glyphicon glyphicon-folder-open"></span>
-                                            <span class="image-preview-input-title">Buscar</span>
-                                            <asp:FileUpload ID="fileUpload" runat="server" />
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Tipo de breaker</label>
+                                            <select id="ddlType" class="form-control" title="Tipo de breaker" data-size="3" required="required">
+                                                <option value="Monofasico">Monofasico</option>
+                                                <option value="Bifasico">Bifasico</option>
+                                                <option value="Trifasico">Trifasico</option>
+                                            </select>
                                         </div>
-                                    </span>
+                                        <!-- end form-group -->
+                                    </div>
+                                    <!-- end col-md-3 -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Seleccione los switches</label>
+                                            <select multiple id="ddlSwitches" title="Switches" class="selectpicker custom_cbx" data-style="btn-info btn-fill btn-block custom_cbx" data-size="7" required="required">
+                                                <option value="01">01</option>
+                                                <option value="02">02</option>
+                                                <option value="03">03</option>
+                                                <option value="04">04</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                                <option value="07">07</option>
+                                                <option value="08">08</option>
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="31">31</option>
+                                                <option value="32">32</option>
+                                                <option value="33">33</option>
+                                                <option value="34">34</option>
+                                                <option value="35">35</option>
+                                                <option value="36">36</option>
+                                                <option value="37">37</option>
+                                                <option value="38">38</option>
+                                                <option value="39">39</option>
+                                                <option value="40">40</option>
+                                                <option value="41">41</option>
+                                                <option value="42">42</option>
+                                            </select>
+                                        </div>
+                                        <!-- end form-group -->
+                                    </div>
+                                    <!-- end col-md-3 -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Corriente</label>
+                                            <input class="form-control" title="Introduzca la corriente del switch" id="txtCurrent" type="text" required="required" />
+                                        </div>
+                                        <!-- end form-group -->
+                                    </div>
+                                    <!-- end col-md-3 -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Calibre</label>
+                                            <input class="form-control" title="Introduzca el calibre del switch" id="txtCaliber" type="text" required="required" />
+                                        </div>
+                                        <!-- end form-group -->
+                                    </div>
+                                    <!-- end col-md-3 -->
                                 </div>
+                                <!-- end row -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Comentarios</label>
+                                            <textarea class="form-control border-input" title="Comentarios..." id="txtComments" rows="3"></textarea>
+                                        </div>
+                                        <!-- end form-group -->
+                                    </div>
+                                    <!-- end col-md-12 -->
+                                </div>
+                                <!-- end row -->
                             </div>
+                            <!-- end col-md-9 -->
                         </div>
+                        <!-- end row -->
+                        <div class="clearfix"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btnCancel_customColor" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btnOK_customColor" onclick="CreateSwitch()">Actualizar</button>
+                        </div>
+                        <!-- end modal-footer -->
                     </div>
-                    <div class="clearfix"></div>
+                    <!-- end card-content -->
                 </div>
+                <!-- end modal-body -->
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btnCancel_customColor" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btnOK_customColor" onclick="UpdatePanel()">Actualizar</button>
-            </div>
+            <!-- end Modal EditPanel -->
         </div>
+        <!-- end modal-dialog modal-custom -->
     </div>
-    <!-- End Modal CreateSwitch -->
+    <!-- end modal fade in -->
+    <!-- end modal CreateSwitch -->
+    <button type='button' class='btn btnOK_customColor' onclick='ShowSwitch()'>Actualizar</button>
+</asp:Content>
+
+<asp:Content ID="JS" ContentPlaceHolderID="JS" runat="server">
+    <script src="Scripts/PanelView.js"></script>
 </asp:Content>

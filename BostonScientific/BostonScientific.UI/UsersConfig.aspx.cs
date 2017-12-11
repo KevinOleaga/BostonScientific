@@ -52,7 +52,7 @@ namespace BostonScientific.UI
             res[0].Email = _tools.Decrypt(res[0].Email).ToLower();
             res[0].IdCard = _tools.Decrypt(res[0].IdCard);
             // res[0].IdRole is a int so we use res[0].Phrase because it's a string
-            res[0].Phrase = _tools.Capitalize(_users.GetUserRole(res[0].IdRole));
+            //res[0].Phrase = _tools.Capitalize(_users.GetUserRole(res[0].IdRole));
             res[0].Telephone = _tools.Decrypt(res[0].Telephone);
             res[0].Photo = _tools.Decrypt(res[0].Photo);
             return res;

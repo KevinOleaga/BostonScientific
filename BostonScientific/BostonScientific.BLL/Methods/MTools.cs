@@ -10,47 +10,37 @@ namespace BostonScientific.BLL.Methods
             _tools = new DAL.Methods.MTools();
         }
 
-        // Capitalize()
-        public string Capitalize(string text)
+        #region Capitalize
+
+        // CapitalizeByWord()
+        public string CapitalizeByWord(string data)
         {
-            return _tools.Capitalize(text);
+            return _tools.CapitalizeByWord(data);
         }
+
+        // Capitalize()
+        public string Capitalize(string data)
+        {
+            return _tools.Capitalize(data);
+        }
+
+        #endregion Capitalize
 
         #region Encryption
 
+        // Encrypt()
         public string Encrypt(string data)
         {
             return _tools.Encrypt(data);
         }
 
+        // Decrypt()
         public string Decrypt(string data)
         {
             return _tools.Decrypt(data);
         }
 
         #endregion Encryption
-
-        #region Managment
-
-        // CreateTable_Panels()
-        public void CreateTable_Panels()
-        {
-            _tools.CreateTable_Panels();
-        }
-
-        // DropTable_Panels()
-        public void DropTable_Panels()
-        {
-            _tools.DropTable_Panels();
-        }
-
-        // DeleteTable_Panels()
-        public void DeleteTable_Panels()
-        {
-            _tools.DeleteTable_Panels();
-        }
-
-        #endregion Managment
     }
 }
 

@@ -14,9 +14,7 @@ namespace BostonScientific.DATA
         public string Email { get; set; }
         public string IdCard { get; set; }
         public string Telephone { get; set; }
-        public string LastTime { get; set; }
         public string Photo { get; set; }
-        public string Phrase { get; set; }
         [References(typeof(AccountStatus))]
         public int IdStatus { get; set; }
         public int FailedAttempts { get; set; }

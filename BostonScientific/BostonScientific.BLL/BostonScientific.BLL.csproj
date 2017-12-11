@@ -41,14 +41,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IPanels.cs" />
+    <Compile Include="Interfaces\IPhrases.cs" />
+    <Compile Include="Interfaces\ISwitch.cs" />
+    <Compile Include="Interfaces\ISwitchInfo.cs" />
     <Compile Include="Interfaces\ITools.cs" />
     <Compile Include="Interfaces\IUsers.cs" />
     <Compile Include="Methods\MPanels.cs" />
+    <Compile Include="Methods\MPhrases.cs" />
+    <Compile Include="Methods\MSwitch.cs" />
+    <Compile Include="Methods\MSwitchInfo.cs" />
     <Compile Include="Methods\MTools.cs" />
     <Compile Include="Methods\MUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BostonScientific.DAL\BostonScientific.DAL.csproj">
       <Project>{459baf52-aa97-467e-a150-f1222514fead}</Project>

@@ -2,10 +2,11 @@
 using BostonScientific.BLL.Methods;
 using System;
 using System.Web.Services;
+using System.Web.UI;
 
 namespace BostonScientific.UI
 {
-    public partial class Panels : System.Web.UI.Page
+    public partial class Panels : Page
     {
         private static IPanels _panels;
         private static ITools _tools;
@@ -17,7 +18,7 @@ namespace BostonScientific.UI
         }
 
         protected void Page_Load(object sender, EventArgs e) { }
-
+        
         protected void ShowPanelsInfo()
         {
             var res = _panels.GetPanelsInfo();

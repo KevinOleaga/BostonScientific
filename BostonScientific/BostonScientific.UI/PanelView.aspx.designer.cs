@@ -31,48 +31,21 @@ namespace BostonScientific.UI {
         protected global::System.Web.UI.WebControls.Label lb_Description;
         
         /// <summary>
-        /// Control txtBreaker.
+        /// Control lb_SpacesAvailable.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBreaker;
+        protected global::System.Web.UI.WebControls.Label lb_SpacesAvailable;
         
         /// <summary>
-        /// Control txtCorriente.
+        /// Control atxtComments.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCorriente;
-        
-        /// <summary>
-        /// Control txtCalibre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCalibre;
-        
-        /// <summary>
-        /// Control txtComments.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtComments;
-        
-        /// <summary>
-        /// Control fileUpload.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileUpload;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea atxtComments;
     }
 }

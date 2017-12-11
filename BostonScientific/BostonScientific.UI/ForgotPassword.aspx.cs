@@ -2,6 +2,7 @@
 using BostonScientific.BLL.Methods;
 using System;
 using System.IO;
+using System.Web.UI;
 
 namespace BostonScientific.UI
 {
@@ -24,6 +25,7 @@ namespace BostonScientific.UI
 
         protected void btnRestoreAccount_Click(object sender, EventArgs e)
         {
+            
             _UserName = txtUser.Text.ToUpper();
 
             if (_UserName == string.Empty)

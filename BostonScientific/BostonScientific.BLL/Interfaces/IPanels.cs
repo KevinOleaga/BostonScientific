@@ -1,10 +1,13 @@
 ﻿using BostonScientific.DATA;
 using System.Collections.Generic;
+using System.IO;
 
 namespace BostonScientific.BLL.Interfaces
 {
     public interface IPanels
     {
+        void SendFileToS3(Stream FileStream, string FileName);
+
         // GetPanelsInfo()
         Panels[] GetPanelsInfo();
 
@@ -25,5 +28,10 @@ namespace BostonScientific.BLL.Interfaces
         
         // IfPanelExist()
         bool IfPanelExist(string IdPanel);
+
+        // UpdateComments()
+        void UpdateComments(Panels PanelInfo);
+
+        int GetInfo();
     }
 }

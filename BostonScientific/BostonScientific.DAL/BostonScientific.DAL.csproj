@@ -65,6 +65,10 @@
       <HintPath>..\packages\FSharp.Core.3.1.2.5\lib\net40\FSharp.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="ServiceStack, Version=4.5.14.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ServiceStack.4.5.14\lib\net45\ServiceStack.dll</HintPath>
       <Private>True</Private>
@@ -105,16 +109,19 @@
   <ItemGroup>
     <Compile Include="conexion.cs" />
     <Compile Include="Interfaces\IPanels.cs" />
+    <Compile Include="Interfaces\IPhrases.cs" />
+    <Compile Include="Interfaces\ISwitch.cs" />
+    <Compile Include="Interfaces\ISwitchInfo.cs" />
     <Compile Include="Interfaces\ITools.cs" />
     <Compile Include="Interfaces\IUsers.cs" />
     <Compile Include="Methods\MPanels.cs" />
+    <Compile Include="Methods\MSwitch.cs" />
+    <Compile Include="Methods\MSwitchInfo.cs" />
     <Compile Include="Methods\MTools.cs" />
     <Compile Include="Methods\MUsers.cs" />
-    <Compile Include="Metodos\MPanels.cs" />
-    <Compile Include="Metodos\MTools.cs" />
+    <Compile Include="Methods\MPhrases.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tools.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -13,21 +13,30 @@ namespace BostonScientific.UI {
     public partial class Index {
         
         /// <summary>
-        /// Control UsersCount.
+        /// Control Users.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UsersCount;
+        protected global::System.Web.UI.WebControls.Label Users;
         
         /// <summary>
-        /// Control PanelsCount.
+        /// Control Panels.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PanelsCount;
+        protected global::System.Web.UI.WebControls.Label Panels;
+        
+        /// <summary>
+        /// Control Alerts.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Alerts;
     }
 }

@@ -82,5 +82,18 @@ namespace BostonScientific.DAL.Interfaces
         void EditUser(Users EditUser);
 
         #endregion Site.Master
+
+        #region Managment
+
+        // CreateTable()
+        void CreateTable();
+
+        // DropTable()
+        void DropTable();
+
+        // DeleteTable()
+        void DeleteTable();
+
+        #endregion Managment
     }
 }

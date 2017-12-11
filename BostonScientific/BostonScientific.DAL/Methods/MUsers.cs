@@ -1,5 +1,6 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
 using Amazon.S3;
+using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 using BostonScientific.DAL.Interfaces;
 using BostonScientific.DATA;
@@ -334,7 +335,7 @@ namespace BostonScientific.DAL.Methods
             }
             return res;
         }
-        
+
         // CheckCode()
         public bool CheckCode(string UserName, string SecretCode)
         {
@@ -533,10 +534,10 @@ namespace BostonScientific.DAL.Methods
         public void SendFileToS3(Stream FileAddress, string FileName, string UserName)
         {
             var client = con.S3_GetClient();
-
+            
             var BucketName = "bostonscientific";
             var SubDirectory = "Users";
-
+            
             try
             {
                 TransferUtility utility = new TransferUtility(client);
@@ -557,7 +558,7 @@ namespace BostonScientific.DAL.Methods
                 Debug.WriteLine("\nError \nUbicación: Capa DAL -> MUsers -> SendFileToS3(). \nDescripción: " + ex.Message);
             }
         }
-        
+
         // UpdateProfile()
         public void UpdateProfile(List<string> data, string UserName)
         {
@@ -574,7 +575,6 @@ namespace BostonScientific.DAL.Methods
                     LastName = data[1],
                     Email = data[2],
                     Telephone = data[3],
-                    Phrase = data[4]
                 });
             }
             catch (Exception ex)
@@ -681,65 +681,80 @@ namespace BostonScientific.DAL.Methods
 
         #endregion Site.Master
 
-        /*
-                // UpdateProfile()
-                public void DeleteUser(string UserName)
-                {
-                    try
-                    {
-                        var db = new PocoDynamo(con.GetClient());
-                        db.RegisterTable<Users>();
+        #region Managment
 
-                        db.DeleteItem<Users>(UserName);
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine("\nError \nUbicación: Capa DAL -> MUsers -> CreateRandomPassword(). \nDescripción: " + ex.Message);
-                    }
-                }
-
-                // UserRole()
-                public Roles[] UserRole(int idRole)
-                {
-                    Roles[] res = { };
-
-                    try
-                    {
-                        var db = new PocoDynamo(con.GetClient());
-                        res = db.ScanAll<Roles>().Where(x => x.IdRole == idRole).ToArray();
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine("\nError: \nSe a producido un error al obtener la información del role. \nDescripción: " + ex.Message);
-                    }
-                    return res;
-                }
-
-
-
-
-                public void CreateTable_Users()
-                {
-                    throw new NotImplementedException();
-                }
-
-        public Users[] GetUserInfo(string UserName)
+        // CreateTable()
+        public void CreateTable()
         {
-        Users[] res = { };
-        UserName = tools.Encrypt(UserName.ToUpper());
+            var db = new PocoDynamo(con.GetClient());
 
-        try
-        {
-        var db = new PocoDynamo(con.GetClient());
-        res = db.ScanAll<Users>().Where(x => x.UserName == UserName).ToArray();
-        }
-        catch (Exception ex)
-        {
-        Debug.WriteLine("\nError: \nSe a producido un error al obtener la información del usuario. \nDescripción: " + ex.Message);
-        }
-        return res;
-        }
-        */
+            try
+            {
+                db.RegisterTable<Users>();
+                db.InitSchema();
 
+                var NewUser = new Users
+                {
+                    UserName = _tools.Encrypt("ADMIN"),
+                    Password = _tools.Encrypt("ADMIN"),
+                    IdRole = 1,
+                    FirstName = _tools.Encrypt("ADMINISTRADOR"),
+                    LastName = _tools.Encrypt("."),
+                    Email = _tools.Encrypt("ADMIN@OUTLOOK.COM"),
+                    IdCard = _tools.Encrypt("1234"),
+                    Telephone = _tools.Encrypt("8888-8888"),
+                    Photo = _tools.Encrypt("https://bitrush.nl/img/avatars/malecostume-512.png"),
+                    IdStatus = 1,
+                    FailedAttempts = 0,
+                    SecretCode = _tools.Encrypt("ADMIN")
+                };
+
+                db.PutItem(NewUser);
+            }
+
+            catch (Exception ex)
+            {
+                Debug.WriteLine("\nError \nUbicación: Capa DAL -> MUsers -> CreateTable(). \nDescripción: " + ex.Message);
+            }
+            finally
+            {
+                db.Close();
+            }
+        }
+
+        // DropTable()
+        public void DropTable()
+        {
+            var db = new PocoDynamo(con.GetClient());
+
+            try
+            {
+                db.DeleteTable<Users>();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("\nError \nUbicación: Capa DAL -> MUsers -> DropTable(). \nDescripción: " + ex.Message);
+            }
+            finally
+            {
+                db.Close();
+            }
+        }
+
+        // DeleteTable()
+        public void DeleteTable()
+        {
+            try
+            {
+                DropTable();
+                CreateTable();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("\nError \nUbicación: Capa DAL -> MUsers -> DeleteTable(). \nDescripción: " + ex.Message);
+            }
+        }
+
+        #endregion Managment
     }
 }

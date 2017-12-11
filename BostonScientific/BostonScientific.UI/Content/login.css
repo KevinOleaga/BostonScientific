@@ -1,2 +1,7 @@
-﻿
+﻿/* EPIC Team */
+.login_logo{
+    height: 140px !important;
+}
+
+
 @charset "UTF-8";.btn_login{margin-bottom:2%;background-color:#225283!important;border-color:#225283!important}.btn_login:hover{margin-bottom:2%;background-color:#2a67a5!important;border-color:#2a67a5!important}.link_error{color:#d2110d;margin-bottom:10px!important;margin-top:-15px!important;color:##225283!important}.link_forgotpassword{color:#225283!important}.div_Password2{margin:-15px 0 25px!important}.link_forgotpassword:hover{color:#2a67a5!important}.div_User{margin:10px 0 25px!important}*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;outline:none}body{background:#EDEDED}#logo{text-align:center;padding:60px 0 55px;border-bottom:2px solid #E0E0E0;background:#fff url(../images/bg.png) repeat}form[role=login]{font:14px/1.6em Lato,serif;padding-top:24px;color:#959595;max-width:320px;margin:0 auto}form[role=login] .input-group-addon{border:none;background:#fff}form[role=login] input[type=text],form[role=login] input[type=password]{border:none;background:#fff;box-shadow:none;height:36px;-webkit-box-shadow:1px 1px 2px 0 rgba(104,104,104,0.4);-moz-box-shadow:1px 1px 2px 0 rgba(104,104,104,0.4);box-shadow:1px 1px 2px 0 rgba(104,104,104,0.4)}form[role=login] input[type=text]:focus,form[role=login] input[type=password]:focus{background:#f6f6f6}form[role=login] > div{position:relative;margin:24px 0}form[role=login] > section{margin:0 0 20px}.form-group.less-space{margin-bottom:12px}.form-control{padding-left:40px}.form-control + .glyphicon{position:absolute;left:0;top:10%;padding:8px 0 0 12px}

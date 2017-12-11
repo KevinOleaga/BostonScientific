@@ -4,16 +4,15 @@
     <div class="sidebar" data-background-color="brown" data-active-color="danger">
         <div class="logo">
             <a href="Index.aspx" class="simple-text logo-normal">
-                <img class="img-responsive custom_02 logo-normal" src="images/logo_white.png" alt="Boston Scientific" />
+                <img class="img-responsive logo-normal" src="images/logo_white.png" alt="Boston Scientific" />
             </a>
-        </div>
-
+        </div><!-- end logo -->
         <div class="sidebar-wrapper">
             <div class="user">
                 <div class="info">
                     <div class="photo">
                         <img src="images/profile.png" />
-                    </div>
+                    </div><!-- end photo -->
 
                     <a data-toggle="collapse" href="#users" class="collapsed">
                         <span>Perfil
@@ -21,26 +20,26 @@
                         </span>
                     </a>
 
-                    <div class="clearfix"></div>
+                    <div class="clearfix"></div><!-- end clearfix -->
 
                     <div class="collapse in" id="users">
                         <ul class="nav">
                             <li class="active">
                                 <a href="MyProfile.aspx">
-                                    <span class="sidebar-mini fa fa-user custom_01"></span>
+                                    <span class="sidebar-mini fa fa-user menu_icons"></span>
                                     <span class="sidebar-normal">Mi Perfil</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="UsersConfig.aspx">
-                                    <span class="sidebar-mini fa fa-group custom_01"></span>
+                                    <span class="sidebar-mini fa fa-group menu_icons"></span>
                                     <span class="sidebar-normal">Adm. Usuarios</span>
                                 </a>
                             </li>
                         </ul>
-                    </div>
-                </div>
-            </div>
+                    </div><!-- end collapse -->
+                </div><!-- end info -->
+            </div><!-- end user -->
 
             <ul class="nav">
                 <li>
@@ -50,41 +49,10 @@
                     </a>
                 </li>
                 <li>
-                    <a data-toggle="collapse" href="#adm_paneles">
+                    <a href="Panels.aspx">
                         <i class="fa fa-sliders"></i>
-                        <p>
-                            ADM. PANELES
-       					    <b class="caret"></b>
-                        </p>
+                        <p>ADM. DE PANELES</p>
                     </a>
-                    <div class="collapse" id="adm_paneles">
-                        <ul class="nav">
-                            <li>
-                                <a href="SearchPanel.aspx">
-                                    <span class="sidebar-mini fa fa-search custom_01"></span>
-                                    <span class="sidebar-normal">Buscar panel</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="CreatePanel.aspx">
-                                    <span class="sidebar-mini fa fa-plus custom_01"></span>
-                                    <span class="sidebar-normal">Crear panel</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="EditPanel.aspx">
-                                    <span class="sidebar-mini fa fa-pencil custom_01"></span>
-                                    <span class="sidebar-normal">Editar panel</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="DeletePanel.aspx">
-                                    <span class="sidebar-mini fa fa-trash-o custom_01"></span>
-                                    <span class="sidebar-normal">Eliminar panel</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
                 <li>
                     <a href="Tools.aspx">
@@ -93,8 +61,8 @@
                     </a>
                 </li>
             </ul>
-        </div>
-    </div>
+        </div><!-- end sidebar-wrapper -->
+    </div><!-- end sidebar -->
 </asp:Content>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
@@ -102,7 +70,7 @@
         <div class="container-fluid">
             <div class="navbar-minimize">
                 <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="fa fa-bars"></i></button>
-            </div>
+            </div><!-- end navbar-minimize -->
 
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle">
@@ -111,9 +79,8 @@
                     <span class="icon-bar bar2"></span>
                     <span class="icon-bar bar3"></span>
                 </button>
-                <a class="navbar-brand" href="#MyProfile">Mi Perfil
-                </a>
-            </div>
+                <a class="navbar-brand" href="#">Mi Perfil</a>
+            </div><!-- end navbar-header -->
 
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -127,73 +94,73 @@
                         </ul>
                     </li>
                 </ul>
-            </div>
-        </div>
-    </nav>
+            </div><!-- end collapse navbar-collapse -->
+        </div><!-- end container-fluid -->
+    </nav><!-- end container-fluid -->
 </asp:Content>
 
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
     <div class="col-lg-5 col-md-5">
         <div class="card card-user">
             <div class="image">
-                <img src="http://allfreedesigns.com/wp-content/uploads/2014/08/tech-backgrounds-2.jpg" />
-            </div>
+                <img src="images/profile_HeaderCard.jpg" />
+            </div><!-- end image -->
             <div class="card-content">
                 <div class="author">
                     <img class="avatar border-white" src="<% Photo(); %>" />
                     <h4 class="card-title">
-                        <asp:Label ID="user" runat="server"></asp:Label>
+                        <asp:Label ID="lb_user" runat="server"></asp:Label>
                         <br />
-                        <a href="#email"><small>
-                            <asp:Label ID="email" runat="server"></asp:Label>
-                        </small></a>
+                        <a href="#">
+                            <small>
+                                <asp:Label ID="lb_email" runat="server"></asp:Label>
+                            </small>
+                        </a>
                     </h4>
-                </div>
-                <p class="description text-center custom_19">
-                    "
-                    <asp:Label ID="phrase" runat="server"></asp:Label>
-                    "
+                </div><!-- end author-->
+                <p class="description text-center">
+                    "<asp:Label ID="lb_phrase" runat="server"></asp:Label>"
                 </p>
-            </div>
+            </div><!-- end card-content -->
             <hr>
             <div class="text-center">
                 <div class="row">
                     <div class="col-md-4">
                         <h5>Usuario<br />
                             <small>
-                                <asp:Label ID="username" runat="server" />
+                                <asp:Label ID="lb_username" runat="server" />
                             </small>
                         </h5>
-                    </div>
+                    </div><!-- end col-md-4 -->
                     <div class="col-md-4">
                         <h5>Rol<br />
                             <small>
-                                <asp:Label ID="role" runat="server" />
+                                <asp:Label ID="lb_role" runat="server" />
                             </small>
                         </h5>
-                    </div>
+                    </div><!-- end col-md-4 -->
                     <div class="col-md-4">
                         <h5>Teléfono<br />
                             <small>
-                                <asp:Label ID="tel" runat="server" />
+                                <asp:Label ID="lb_telephone" runat="server" />
                             </small>
                         </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </div><!-- end col-md-4 -->
+                </div><!-- end row-->
+            </div><!-- end text-center -->
+        </div><!-- end card card-user -->
 
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Miembros</h4>
-            </div>
+            </div><!-- end card-header -->
             <div class="card-content card_members">
                 <ul class="list-unstyled team-members">
                     <% Members();  %>
                 </ul>
-            </div>
-        </div>
-    </div>
+            </div><!-- end card-content card-members -->
+        </div><!-- end card -->
+    </div><!-- end col-lg-5 col-md-5 -->
 
     <div class="col-lg-7 col-md-7">
         <div class="card">
@@ -259,7 +226,7 @@
                             <input type="text" class="form-control image-preview-filename" disabled="disabled">
                             <span class="input-group-btn">
                                 <button type="button" class="btn btn-default image-preview-clear" style="display: none;">
-                                    <span class="fa fa-remove"></span> Limpiar
+                                    <span class="fa fa-remove"></span>Limpiar
                                 </button>
                                 <div class="btn btn-default image-preview-input">
                                     <span class="fa fa-folder-open"></span>

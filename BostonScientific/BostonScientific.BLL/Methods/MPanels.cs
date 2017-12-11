@@ -1,6 +1,7 @@
 ﻿using BostonScientific.BLL.Interfaces;
 using BostonScientific.DATA;
 using System.Collections.Generic;
+using System.IO;
 
 namespace BostonScientific.BLL.Methods
 {
@@ -10,6 +11,11 @@ namespace BostonScientific.BLL.Methods
         public MPanels()
         {
             _panels = new DAL.Methods.MPanels();
+        }
+
+        public void SendFileToS3(Stream FileStream, string FileName)
+        {
+            _panels.SendFileToS3(FileStream, FileName);
         }
 
         // GetPanelsInfo()
@@ -52,6 +58,17 @@ namespace BostonScientific.BLL.Methods
         public bool IfPanelExist(string IdPanel)
         {
             return _panels.IfPanelExist(IdPanel);
+        }
+
+        // UpdateComments()
+        public void UpdateComments(Panels PanelInfo)
+        {
+            _panels.UpdateComments(PanelInfo);
+        }
+
+        public int GetInfo()
+        {
+            return _panels.GetInfo();
         }
     }
 }

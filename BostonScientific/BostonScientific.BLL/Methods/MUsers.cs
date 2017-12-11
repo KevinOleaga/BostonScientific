@@ -158,5 +158,27 @@ namespace BostonScientific.BLL.Methods
         }
 
         #endregion Site.Master
+
+        #region Managment
+
+        // CreateTable()
+        public void CreateTable()
+        {
+            _users.CreateTable();
+        }
+
+        // DropTable()
+        public void DropTable()
+        {
+            _users.DropTable();
+        }
+
+        // DeleteTable()
+        public void DeleteTable()
+        {
+            _users.DeleteTable();
+        }
+
+        #endregion Managment
     }
 }

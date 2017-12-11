@@ -27,13 +27,13 @@
                         <ul class="nav">
                             <li>
                                 <a href="MyProfile.aspx">
-                                    <span class="sidebar-mini fa fa-user custom_01"></span>
+                                    <span class="sidebar-mini fa fa-user"></span>
                                     <span class="sidebar-normal">Mi Perfil</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="UsersConfig.aspx">
-                                    <span class="sidebar-mini fa fa-group custom_01"></span>
+                                    <span class="sidebar-mini fa fa-group"></span>
                                     <span class="sidebar-normal">Adm. Usuarios</span>
                                 </a>
                             </li>
@@ -52,7 +52,7 @@
                 <li class="active">
                     <a href="Panels.aspx">
                         <i class="fa fa-sliders"></i>
-                        <p>Adm. de Paneles</p>
+                        <p>ADM. DE PANELES</p>
                     </a>
                 </li>
                 <li>
@@ -80,7 +80,7 @@
                     <span class="icon-bar bar2"></span>
                     <span class="icon-bar bar3"></span>
                 </button>
-                <a class="navbar-brand" href="#Panels">Adm. Paneles
+                <a class="navbar-brand" href="#">Administración de paneles
                 </a>
             </div>
 
@@ -112,7 +112,8 @@
                 </p>
                 <br />
                 <button type="button" class="btn btnCreatePanel" data-toggle="modal" data-target="#CreatePanel">Crear panel</button>
-            </div>
+            </div><!-- end card-header -->
+
             <div class="card-content">
                 <table id="bootstrap-table" class="table">
                     <thead>
@@ -126,15 +127,15 @@
                         <% ShowPanelsInfo(); %>
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
+            </div> <!-- end card-content -->
+        </div> <!-- end card -->
+    </div>  <!-- end col-md-12 -->
 
     <!-- Modal CreatePanel -->
     <div class="modal fade in" id="CreatePanel" role="dialog">
         <div class="modal-dialog modal_custom">
             <div class="modal-content">
-                <div>
+                <div> 
                     <div class="form-wizard form-header-stylist form-body-material">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h3>Crear Panel</h3>
@@ -142,38 +143,27 @@
 
                         <div class="form-wizard-steps form-wizard-tolal-steps-4">
                             <div class="form-wizard-progress">
-                                <div class="form-wizard-progress-line" data-now-value="12.25" data-number-of-steps="4" style="width: 12.25%;"></div>
+                                <div class="form-wizard-progress-line" data-now-value="12.25" data-number-of-steps="4" style="width: 12.25%;">
+                                </div>
                             </div>
-                            <!-- Step 1 -->
                             <div class="form-wizard-step active">
                                 <div class="form-wizard-step-icon"><i class="fa fa-info" aria-hidden="true"></i></div>
-                                <p>Información General</p>
+                                <p class="custom-margin">Información General</p>
                             </div>
-                            <!-- Step 1 -->
-
-                            <!-- Step 2 -->
                             <div class="form-wizard-step">
                                 <div class="form-wizard-step-icon"><i class="fa fa-location-arrow" aria-hidden="true"></i></div>
-                                <p>Ubicación</p>
+                                <p class="custom-margin">Ubicación</p>
                             </div>
-                            <!-- Step 2 -->
-
-                            <!-- Step 3 -->
                             <div class="form-wizard-step">
                                 <div class="form-wizard-step-icon"><i class="fa fa-dashboard" aria-hidden="true"></i></div>
-                                <p>Medidas</p>
+                                <p class="custom-margin">Medidas</p>
                             </div>
-                            <!-- Step 3 -->
-
-                            <!-- Step 4 -->
                             <div class="form-wizard-step">
                                 <div class="form-wizard-step-icon"><i class="fa fa-comments" aria-hidden="true"></i></div>
-                                <p>Comentarios</p>
+                                <p class="custom-margin">Comentarios</p>
                             </div>
-                            <!-- Step 4 -->
-                        </div>
+                        </div> <!-- end form-wizard-steps form-wizard-tolal-steps-4 -->
 
-                        <!-- Form Step 1 -->
                         <fieldset>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="25.6" aria-valuemin="0" aria-valuemax="100" style="width: 25.6%"></div>
@@ -200,9 +190,7 @@
                                 <button type="button" class="btn btn-next">Siguiente</button>
                             </div>
                         </fieldset>
-                        <!-- Form Step 1 -->
 
-                        <!-- Form Step 2 -->
                         <fieldset>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50.6" aria-valuemin="0" aria-valuemax="100" style="width: 50.6%">
@@ -223,9 +211,7 @@
                                 <button type="button" class="btn btn-next">Siguiente</button>
                             </div>
                         </fieldset>
-                        <!-- Form Step 2 -->
-
-                        <!-- Form Step 3 -->
+                        
                         <fieldset>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="75.6" aria-valuemin="0" aria-valuemax="100" style="width: 75.6%">
@@ -252,9 +238,7 @@
                                 <button type="button" class="btn btn-next">Siguiente</button>
                             </div>
                         </fieldset>
-                        <!-- Form Step 3 -->
-
-                        <!-- Form Step 4 -->
+                        
                         <fieldset>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
@@ -272,12 +256,11 @@
                                 <button type="button" class="btn btn-submit" onclick="CreatePanel()">Crear Panel</button>
                             </div>
                         </fieldset>
-                        <!-- Form Step 4 -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    </div><!-- end form-wizard form-header-stylist form-body-material -->
+                </div><!-- end div -->
+            </div><!-- end modal-content -->
+        </div><!-- end modal-dialog modal_custom -->
+    </div><!-- end modal fade in -->
     <!-- End Modal CreatePanel -->
 
     <!-- Modal EditPanel -->
@@ -323,7 +306,7 @@
                                             <input class="form-control required" title="Introduzca una descripción del panel" id="U_txtDescription" type="text" />
                                         </div>
                                     </div>
-                                </div>
+                                </div><!-- end row -->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -337,7 +320,7 @@
                                             <input class="form-control required" title="Introduzca la proveniencia del panel" id="U_txtFrom" type="text" />
                                         </div>
                                     </div>
-                                </div>
+                                </div><!-- end row -->
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
@@ -363,7 +346,7 @@
                                             <input class="form-control required" title="Introduzca la frecuencia del panel" id="U_txtFrequency" type="text" />
                                         </div>
                                     </div>
-                                </div>
+                                </div><!-- end row -->
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -371,8 +354,8 @@
                                             <textarea class="form-control border-input" title="Comentarios..." id="U_txtComments" rows="3"></textarea>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </div><!-- end row -->
+                            </div><!-- end col-md-9 -->
 
                             <div class="col-md-3">
                                 <div class="card card-circle-chart edit_panelChart" data-background-color="brown">
@@ -380,13 +363,13 @@
                                         <h5 class="card-title custom-title">Switches</h5>
                                         <p class="description custom_EditCardSub">Espacios disponibles</p>
                                     </div>
-                                    <div class="card-content">
-                                        <div id="chartSubscriptions" class="chart-circle" data-percent="100">
-                                            42 / 42
+                                    <div class="card-content">                                        
+                                        <div id="chart" class="chart-circle custom-chart">
+                                            <p class="custom_p" id="U_value">/42</p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </div><!-- end card card-circle-chart edit_panelChart -->
+                            </div><!-- end col-md-3 -->
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -402,5 +385,5 @@
 </asp:Content>
 
 <asp:Content ID="JS" ContentPlaceHolderID="JS" runat="server">
-    <script src="Scripts/temp/Panels.js"></script>
+    <script src="Scripts/Panels.js"></script>
 </asp:Content>

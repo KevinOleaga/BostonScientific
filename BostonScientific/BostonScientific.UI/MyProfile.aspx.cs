@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 
 namespace BostonScientific.UI
 {
@@ -15,11 +14,13 @@ namespace BostonScientific.UI
 
         private IUsers _users;
         private ITools _tools;
+        private IPhrases _phrases;
 
         public MyProfile()
         {
             _users = new MUsers();
             _tools = new MTools();
+            _phrases = new MPhrases();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -27,15 +28,17 @@ namespace BostonScientific.UI
             _UserName = Context.User.Identity.Name;
 
             var res = _users.GetUserInfo(_UserName);
+            var RandomPhrase = _phrases.GetRandomPhrase();
+
             photo = _tools.Decrypt(res[0].Photo);
-            user.Text = _tools.Capitalize(_tools.Decrypt(res[0].FirstName) + " " + _tools.Decrypt(res[0].LastName));
-            email.Text = _tools.Decrypt(res[0].Email).ToLower();
-            phrase.Text = _tools.Decrypt(res[0].Phrase);
-            username.Text = _tools.Decrypt(res[0].UserName);
-            tel.Text = _tools.Decrypt(res[0].Telephone);
-            role.Text = _tools.Capitalize(_users.GetUserRole(res[0].IdRole));
+            lb_user.Text = _tools.Capitalize(_tools.Decrypt(res[0].FirstName) + " " + _tools.Decrypt(res[0].LastName));
+            lb_email.Text = _tools.Decrypt(res[0].Email).ToLower();
+            lb_phrase.Text = RandomPhrase;
+            lb_username.Text = _tools.Decrypt(res[0].UserName);
+            lb_telephone.Text = _tools.Decrypt(res[0].Telephone);
+            lb_role.Text = _tools.Capitalize(_users.GetUserRole(res[0].IdRole));
             
-            E_Role.Text = role.Text;
+            E_Role.Text = lb_role.Text;
             E_IdCard.Text = _tools.Decrypt(res[0].IdCard);
         }
 

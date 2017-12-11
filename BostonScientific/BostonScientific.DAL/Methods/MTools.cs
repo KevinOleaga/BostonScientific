@@ -1,8 +1,5 @@
 ﻿using BostonScientific.DAL.Interfaces;
-using BostonScientific.DATA;
-using ServiceStack.Aws.DynamoDb;
 using System;
-using System.Diagnostics;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
@@ -13,22 +10,24 @@ namespace BostonScientific.DAL.Methods
     {
         conexion con = new conexion();
 
-        // Capitalize()
-        public string Capitalize(string text)
-        {
-            string res = string.Empty;
+        #region Capitalize
 
-            try
-            {
-                res = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text.ToLower());
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("\nError \nUbicación: Capa DAL -> MTools -> Capitalize(). \nDescripción: " + ex.Message);
-            }
+        // CapitalizeByWord()
+        public string CapitalizeByWord(string data)
+        {
+            string res = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(data.ToLower());
             return res;
         }
 
+        // Capitalize()
+        public string Capitalize(string data)
+        {
+            data = data.Substring(0, 1).ToUpper() + data.Substring(1, (data.Length - 1)).ToLower();
+            return data;
+        }
+
+        #endregion Capitalize
+        
         #region Encryption
 
         // SecretKey (16 Characters)
@@ -75,68 +74,5 @@ namespace BostonScientific.DAL.Methods
         }
 
         #endregion
-
-        #region  Managment
-
-        // CreateTable_Panels()
-        public void CreateTable_Panels()
-        {
-            var db = new PocoDynamo(con.GetClient());
-
-            try
-            {
-                db.RegisterTable<Panels>();
-                db.InitSchema();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("\nError \nUbicación: Capa DAL -> MPanels -> CreateTable_Panels(). \nDescripción: " + ex.Message);
-            }
-            finally
-            {
-                db.Close();
-            }
-        }
-
-        // DropTable_Panels()
-        public void DropTable_Panels()
-        {
-            var db = new PocoDynamo(con.GetClient());
-
-            try
-            {
-                db.DeleteTable<Panels>();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("\nError \nUbicación: Capa DAL -> MTools -> DropTable_Panels(). \nDescripción: " + ex.Message);
-            }
-            finally
-            {
-                db.Close();
-            }
-        }
-
-        // DeleteTable_Panels()
-        public void DeleteTable_Panels()
-        {
-            var db = new PocoDynamo(con.GetClient());
-
-            try
-            {
-                DropTable_Panels();
-                CreateTable_Panels();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("\nError \nUbicación: Capa DAL -> MPanels -> DeleteTable_Panels(). \nDescripción: " + ex.Message);
-            }
-            finally
-            {
-                db.Close();
-            }
-        }
-
-        #endregion  Managment
     }
 }

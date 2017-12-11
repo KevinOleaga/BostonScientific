@@ -7,18 +7,23 @@
     <meta name="viewport" content="width=1,initial-scale=1,user-scalable=1" />
     <title><%: Page.Title %> | Boston Scientific</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon.ico">
 
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="Content/login.css" />
+    <link rel="stylesheet" type="text/css" href="Content/font-awesome.css" />
 
+    <!-- Fonts -->
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900" />
 </head>
 
 <body>
     <section id="logo">
         <a href="#">
-            <img src="images/logo_blue.png" alt="Boston Scientific" />
+            <img src="images/login_logo.png" class="login_logo" alt="Boston Scientific" />
         </a>
     </section>
 
@@ -28,4 +33,6 @@
         </form>
     </section>
 </body>
+    
+<script src="Scripts/sweetalert2.js"></script>
 </html>

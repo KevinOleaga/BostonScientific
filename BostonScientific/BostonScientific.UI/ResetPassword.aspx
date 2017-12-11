@@ -3,7 +3,7 @@
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
     <div id="divSecretCode" runat="server">
         <asp:TextBox CssClass="form-control" ToolTip="Introduzca su código de verificación" placeholder="Código de verificación" ID="txtCode" runat="server" />
-        <span class="glyphicon glyphicon-lock" />
+        <span class="glyphicon glyphicon-key" />
     </div>
 
     <div id="divPassword" runat="server">

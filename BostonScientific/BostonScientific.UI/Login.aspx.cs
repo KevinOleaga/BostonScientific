@@ -24,6 +24,7 @@ namespace BostonScientific.UI
             btnPassword.Visible = false;
             btnRestore.Visible = false;
             btnReturn.Visible = false;
+            lbError.Visible = false;
         }
 
         protected void btnUser_Click(object sender, EventArgs e)
@@ -32,6 +33,7 @@ namespace BostonScientific.UI
 
             if (_UserName == string.Empty)
             {
+                lbError.Visible = true;
                 lbError.Text = "Usuario Inválido";
             }
             else
@@ -90,6 +92,7 @@ namespace BostonScientific.UI
             divUser.Visible = true;
             btnUser.Visible = true;
 
+            lbError.Visible = false;
             link.Visible = true;
         }
 
@@ -104,6 +107,10 @@ namespace BostonScientific.UI
 
             if (_Password == string.Empty)
             {
+                divPassword.Visible = true;
+                btnPassword.Visible = true;
+
+                lbError.Visible = true;
                 lbError.Text = "Contraseña Inválida";
             }
             else
@@ -141,14 +148,12 @@ namespace BostonScientific.UI
                         break;
                     case false:
                         res = _users.GetUserStatus(_UserName);
-                        var n = 0;
 
                         if (res == "Activo")
                         {
                             _users.CreateNewFailedAttempt(_UserName);
-                            n = _users.GetFailedAttempts(_UserName);
 
-                            if (n == 3)
+                            if (_users.GetFailedAttempts(_UserName) == 3)
                             {
                                 divUser.Visible = false;
                                 btnUser.Visible = false;
@@ -175,8 +180,6 @@ namespace BostonScientific.UI
                         }
                         else if (res == "Bloqueado")
                         {
-                            n = _users.GetFailedAttempts(_UserName);
-
                             divUser.Visible = false;
                             btnUser.Visible = false;
 

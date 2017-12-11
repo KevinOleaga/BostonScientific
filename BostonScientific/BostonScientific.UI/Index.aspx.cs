@@ -1,6 +1,7 @@
 ﻿using BostonScientific.BLL.Interfaces;
 using BostonScientific.BLL.Methods;
 using System;
+using System.Web.UI;
 
 namespace BostonScientific.UI
 {
@@ -16,8 +17,10 @@ namespace BostonScientific.UI
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            PanelsCount.Text = _panels.CountPanels().ToString();
-            UsersCount.Text = _users.GetTotalMembers().ToString();
+            ScriptManager.RegisterClientScriptBlock(this, GetType(), "mykey", "successalert();", true);
+
+            Panels.Text = _panels.CountPanels().ToString();
+            Users.Text = _users.GetTotalMembers().ToString();
         }
     }
 }

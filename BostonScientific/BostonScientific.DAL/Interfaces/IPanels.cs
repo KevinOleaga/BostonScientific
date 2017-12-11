@@ -1,5 +1,6 @@
 ﻿using BostonScientific.DATA;
 using System.Collections.Generic;
+using System.IO;
 
 namespace BostonScientific.DAL.Interfaces
 {
@@ -26,10 +27,12 @@ namespace BostonScientific.DAL.Interfaces
         // IfPanelExist()
         bool IfPanelExist(string IdPanel);
 
+        // UpdateComments()
+        void UpdateComments(Panels PanelInfo);
 
+        int GetInfo();
 
-
-
+        void SendFileToS3(Stream FileStream, string FileName);
         /*
 
         #region Index.aspx

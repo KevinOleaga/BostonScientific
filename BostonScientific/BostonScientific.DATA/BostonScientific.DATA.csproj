@@ -87,12 +87,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountStatus.cs" />
+    <Compile Include="Files.cs" />
+    <Compile Include="Phrases.cs" />
+    <Compile Include="Switch.cs" />
     <Compile Include="Panels.cs" />
-    <Compile Include="Panels_Switches.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PruebaJuan.cs" />
     <Compile Include="Roles.cs" />
+    <Compile Include="SwitchInfo.cs" />
+    <Compile Include="testData.cs" />
     <Compile Include="Users.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

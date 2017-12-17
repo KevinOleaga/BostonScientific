@@ -50,6 +50,40 @@ namespace BostonScientific.DAL.Methods
             }
         }
 
+        // GetInfo()
+        public SwitchInfo[] GetInfo(string IdSwitch)
+        {
+            SwitchInfo[] res = { };
+            var db = new PocoDynamo(con.GetClient());
+
+            try
+            {
+                res = db.ScanAll<SwitchInfo>().Where(x => x.IdSwitch == IdSwitch).ToArray();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("\nError \nUbicación: Capa DAL -> MSwitchInfo -> GetPanelSwitches(). \nDescripción: " + ex.Message);
+            }
+            return res;
+        }
+
+        // DeleteSwitchInfo()
+        public void DeleteSwitchInfo(string IdSwitch)
+        {
+            var db = new PocoDynamo(con.GetClient());
+
+            try
+            {
+                db.RegisterTable<SwitchInfo>();
+                db.DeleteItem<SwitchInfo>(IdSwitch);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("\nError \nUbicación: Capa DAL -> MSwitchInfo -> GetPanelSwitches(). \nDescripción: " + ex.Message);
+            }
+        }
+
+
         #region Managment
 
         // CreateTable()

@@ -13,10 +13,10 @@ function operateFormatter(value, row, index) {
 
 $().ready(function () {
     window.operateEvents = {
-        'click .view': function (e, value, row, index) {
-            info = JSON.stringify(row);
-            row.a
-            swal('Opps', row.IdSwitch, 'success')
+        'click .view': function (e, value, row, index) {            
+            link = "Switch.aspx?S=" + row.IdSwitch;
+            location.href = link;
+
             $('.Remove').addClass('Remove');
         },
     };
@@ -156,8 +156,7 @@ function CreateSwitch() {
                 allowEnterKey: false
             })
 
-            link = "SwitchInfo.aspx?P=" + response.d;
-            setTimeout(function () { location.href = link; }, 2000);
+            setTimeout(function () { window.location.reload(); }, 2000);
         },
         error: function (response) {
             swal('Oops...', 'Un error a ocurrido internamente, contacte con el administrador', 'error')

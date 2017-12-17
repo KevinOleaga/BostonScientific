@@ -22,6 +22,18 @@ namespace BostonScientific.BLL.Methods
             return _switchInfo.GetPanelSwitches(IdPanel);
         }
 
+        // GetInfo()
+        public SwitchInfo[] GetInfo(string IdSwitch)
+        {
+            return _switchInfo.GetInfo(IdSwitch);
+        }
+
+        // DeleteSwitchInfo()
+        public void DeleteSwitchInfo(string IdSwitch)
+        {
+            _switchInfo.DeleteSwitchInfo(IdSwitch);
+        }
+
 
         // CreateSwitch()
         public void CreateSwitch(SwitchInfo NewSwitch)

@@ -33,7 +33,20 @@ namespace BostonScientific.UI
             lb_IdPanel.Text = string.Format("Código del panel: {0}", _tools.Capitalize(_tools.Decrypt(res[0].IdPanel)));
             lb_Description.Text = string.Format("Descripción: {0}", _tools.Capitalize(_tools.Decrypt(res[0].Description)));
             lb_SpacesAvailable.Text = string.Format("Espacios Disponibles: {0}", _tools.Decrypt(res[0].SpacesAvailable));
-            atxtComments.InnerText = _tools.Capitalize(_tools.Decrypt(res[0].Comments));
+            txtComments_.InnerText = _tools.Capitalize(_tools.Decrypt(res[0].Comments));
+
+            I_txtIdPanel.Text = _tools.Decrypt(res[0].IdPanel);
+            I_txtModel.Text = _tools.Capitalize(_tools.Decrypt(res[0].Model));
+            I_txtBus.Text = _tools.Decrypt(res[0].Bus);
+            I_txtMain.Text = _tools.Decrypt(res[0].Main);
+            I_txtDescription.Text = _tools.Capitalize(_tools.Decrypt(res[0].Description));
+            I_txtArea.Text = _tools.Capitalize(_tools.Decrypt(res[0].Area));
+            I_txtFrom.Text = _tools.Capitalize(_tools.Decrypt(res[0].From));
+            I_txtVoltage.Text = _tools.Capitalize(_tools.Decrypt(res[0].Voltage));
+            I_txtPhases.Text = _tools.Capitalize(_tools.Decrypt(res[0].Phases));
+            I_txtThreads.Text = _tools.Capitalize(_tools.Decrypt(res[0].Threads));
+            I_txtFrequency.Text = _tools.Capitalize(_tools.Decrypt(res[0].Frequency));
+            I_txtComments.Value = _tools.Capitalize(_tools.Decrypt(res[0].Comments));
         }
 
         public void ListSwitches_01()
@@ -174,10 +187,17 @@ namespace BostonScientific.UI
 
             _switchInfo.CreateSwitch(NewSwitch);
         }
-
-        protected void btn_save_Click(object sender, EventArgs e)
+        
+        protected void btnSave_Click(object sender, EventArgs e)
         {
+            var comments = txtComments_.Value;
+            var PanelInfo = new DATA.Panels
+            {
+                IdPanel = Request.QueryString["C"],
+                Comments = comments
 
+            };
+            _panels.UpdateComments(PanelInfo);
         }
     }
 }

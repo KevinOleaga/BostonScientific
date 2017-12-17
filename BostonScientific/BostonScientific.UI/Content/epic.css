@@ -1,4 +1,29 @@
-﻿.SetColor1{
+﻿.custom_cm{
+    margin-bottom: 13%;
+}
+
+.txtsize{
+    width: 54px;
+}
+
+.txtTop{
+    margin-top:10%;
+}
+
+.custom_col{
+    text-align: right;
+    margin-top: -6%;
+}
+
+.custom-index{
+    z-index:0 !important;
+}
+
+.custom_card{
+        padding: 15px 15px 711px 15px !important;
+}
+
+.SetColor1{
     background-color: #FFECB3;
 }
 
@@ -188,7 +213,7 @@
 }
 
 .custom-size {
-    padding-bottom: 113%;
+    padding-bottom: 127%;
 }
 
 .custom-title {

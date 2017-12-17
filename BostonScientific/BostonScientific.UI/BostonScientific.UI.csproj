@@ -179,9 +179,11 @@
     <Content Include="Scripts\demo.js" />
     <Content Include="Scripts\epic.js" />
     <Content Include="Scripts\es6-promise-auto.min.js" />
+    <Content Include="Scripts\exporting.js" />
     <Content Include="Scripts\form-wizard.js" />
     <Content Include="Scripts\fullcalendar.min.js" />
     <Content Include="Scripts\Graph.js" />
+    <Content Include="Scripts\highcharts.js" />
     <Content Include="Scripts\img_upload.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-jvectormap.js" />

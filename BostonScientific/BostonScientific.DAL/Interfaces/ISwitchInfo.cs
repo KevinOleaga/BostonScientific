@@ -12,9 +12,13 @@ namespace BostonScientific.DAL.Interfaces
         // GetPanelSwitches()
         SwitchInfo[] GetPanelSwitches(string IdPanel);
 
+        // DeleteSwitchInfo()
+        void DeleteSwitchInfo(string IdSwitch);
 
         // CreateSwitch()
         void CreateSwitch(SwitchInfo NewSwitch);
+        // GetInfo()
+        SwitchInfo[] GetInfo(string IdSwitch);
 
         #region Managment
 

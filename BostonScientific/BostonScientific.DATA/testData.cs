@@ -17,5 +17,7 @@ namespace BostonScientific.DATA
     public class Payload
     {
         public int Medicion { get; set; }
+
+        public string Time { get; set; }
     }
 }

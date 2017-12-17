@@ -194,19 +194,13 @@ namespace BostonScientific.DAL.Methods
 
         // UpdateComments()
         public void UpdateComments(Panels PanelInfo)
-        {
+        {;
             var db = new PocoDynamo(con.GetClient());
             db.RegisterTable<Panels>();
 
             try
             {
-                Debug.WriteLine(_tools.Decrypt(PanelInfo.IdPanel));
-                Debug.WriteLine(_tools.Decrypt(PanelInfo.Comments));
-                db.UpdateItem(PanelInfo.IdPanel,
-                put: () => new Panels
-                {
-                    Comments = PanelInfo.Comments
-                });
+                db.UpdateItemNonDefaults(new Panels { IdPanel = PanelInfo.IdPanel, Comments = _tools.Encrypt(PanelInfo.Comments) });                
             }
             catch (Exception ex)
             {

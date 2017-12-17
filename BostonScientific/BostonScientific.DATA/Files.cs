@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ServiceStack.DataAnnotations;
 
 namespace BostonScientific.DATA
 {
-    class Files
+    public class Files
     {
+        [HashKey]
+        [AutoIncrement]
+        public int Id { get; set; }
+
+        public string IdSwitch { get; set; }
+
+        public string FileName { get; set; }
+
+        public string Location { get; set; }
     }
 }

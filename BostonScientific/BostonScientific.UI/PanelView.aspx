@@ -126,7 +126,7 @@
                             <asp:Label ID="lb_SpacesAvailable" runat="server"></asp:Label>
                         </p>
                         <div class="btns">
-                            <button type="button" class="btn btnOK_customColor" data-toggle="modal" data-target="#SelectBreakers">Ver información del panel</button>
+                            <button type="button" class="btn btnOK_customColor" data-toggle="modal" data-target="#PanelInfo">Ver información del panel</button>
                             <button type="button" class="btn btnOK_customColor" data-toggle="modal" data-target="#CreateSwitch">Crear Switch</button>
                         </div>
                     </div>
@@ -134,8 +134,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <br />
-                        <textarea runat="server" id="atxtComments" rows="3" class="form-control border-input" placeholder="Comentarios..."></textarea>
-                        <button type="button" class="btn btnOK_customColor custom_btn_save" data-toggle="modal" data-target="#SelectBreakers">Guardar</button>
+                        <textarea runat="server" id="txtComments_" rows="3" class="form-control border-input custom_cm" readonly="readonly" placeholder="Comentarios..."></textarea>
                     </div>
                 </div>
 
@@ -293,7 +292,7 @@
                         <div class="clearfix"></div>
                         <div class="modal-footer">
                             <button type="button" class="btn btnCancel_customColor" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btnOK_customColor" onclick="CreateSwitch()">Actualizar</button>
+                            <button type="button" class="btn btnOK_customColor" onclick="CreateSwitch()">Crear</button>
                         </div>
                         <!-- end modal-footer -->
                     </div>
@@ -307,7 +306,116 @@
     </div>
     <!-- end modal fade in -->
     <!-- end modal CreateSwitch -->
-    <button type='button' class='btn btnOK_customColor' onclick='ShowSwitch()'>Actualizar</button>
+
+    <!-- Modal EditPanel -->
+    <div class="modal fade in" id="PanelInfo" role="dialog">
+        <div class="modal-dialog modal_custom">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Informacion del panel</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Código del panel</label>
+                                            <asp:TextBox CssClass="form-control" ReadOnly="true" ID="I_txtIdPanel" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Modelo</label>
+                                            <asp:TextBox CssClass="form-control" ReadOnly="true" ID="I_txtModel" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Bus</label>
+                                            <asp:TextBox CssClass="form-control" ReadOnly="true" ID="I_txtBus" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Main</label>
+                                            <asp:TextBox CssClass="form-control" ReadOnly="true" ID="I_txtMain" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Descripción</label>
+                                            <asp:TextBox CssClass="form-control" ReadOnly="true" ID="I_txtDescription" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end row -->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Área</label>
+                                            <asp:TextBox CssClass="form-control" ReadOnly="true" ID="I_txtArea" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>From</label>
+                                            <asp:TextBox CssClass="form-control" ReadOnly="true" ID="I_txtFrom" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end row -->
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Voltaje</label>
+                                            <asp:TextBox CssClass="form-control" ReadOnly="true" ID="I_txtVoltage" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Fases</label>
+                                            <asp:TextBox CssClass="form-control" ReadOnly="true" ID="I_txtPhases" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Hilos</label>
+                                            <asp:TextBox CssClass="form-control" ReadOnly="true" ID="I_txtThreads" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Frecuencia</label>
+                                            <asp:TextBox CssClass="form-control" ReadOnly="true" ID="I_txtFrequency" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end row -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Comentarios</label>
+                                            <textarea runat="server" id="I_txtComments" readonly="readonly" rows="4" class="form-control border-input"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end row -->
+                            </div>
+                            <!-- end col-md-9 -->
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btnCancel_customColor" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal EditPanel -->
 </asp:Content>
 
 <asp:Content ID="JS" ContentPlaceHolderID="JS" runat="server">
